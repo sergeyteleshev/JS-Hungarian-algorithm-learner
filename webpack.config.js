@@ -4,12 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const NODE_ENV = process.env.NODE_ENV;
-
 const config = {
     entry:     [  'babel-polyfill',
-        'react-hot-loader/patch','./src/index.js'],
+        'react-hot-loader/patch','./src/index.js', 'whatwg-fetch'],
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
     },
     module: {
         rules: [
@@ -20,7 +19,7 @@ const config = {
                     loader: 'babel-loader',
                     options: {
                         presets: [['env', {"modules": false}], 'react'],
-                        plugins: ['react-hot-loader/babel']
+                        plugins: ['react-hot-loader/babel', 'transform-object-rest-spread']
                     }
                 }
             },
@@ -30,30 +29,26 @@ const config = {
                     'file-loader'
                 ]
             },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader'
-                ]
-            }
-
+            { test: /\.(woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
         ]
+    },
+    externals: {
+
     },
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-            NODE_ENV:JSON.stringify(NODE_ENV)
+            'NODE_ENV':JSON.stringify(NODE_ENV)
         }),
         new webpack.ProvidePlugin({
-            // $: 'jquery',
-            // jQuery: 'jquery',
+            $: 'jquery',
         })
     ]
 };
 if (NODE_ENV === 'production') {
     config.output = {
-        filename: 'bundle.min.js',
-            path: path.resolve(__dirname, './build/'),
+        filename: 'bundle.[hash].js',
+            path: path.resolve(__dirname, './build/')
     };
     config.plugins.push(
         new webpack.optimize.ModuleConcatenationPlugin()
@@ -86,7 +81,7 @@ if (NODE_ENV === 'production') {
         new webpack.optimize.OccurrenceOrderPlugin()
     );
     config.plugins.push(
-        new ExtractTextPlugin('styles.css')
+        new ExtractTextPlugin('styles.[hash].css')
     );
     config.plugins.push(
         new CleanWebpackPlugin(path.resolve(__dirname, './build/'))
@@ -97,7 +92,6 @@ if (NODE_ENV === 'production') {
             template:'./src/template.html',
             filename:'Background.html',
             inject:false,
-            hash:true,
             source:'',
             prefix:'{$wa_app_static_url}js/build/'
         })
@@ -115,7 +109,13 @@ if (NODE_ENV === 'production') {
     config.output = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, './build/'),
+        publicPath: '/'
     };
+    config.plugins.push(
+        new webpack.optimize.CommonsChunkPlugin({
+            children: true,
+            async: true,
+        }));
     config.plugins.push(
         new HtmlWebpackPlugin({
             title: 'APP'    ,
@@ -128,6 +128,7 @@ if (NODE_ENV === 'production') {
     );
     config. devtool ='inline-source-map';
     config.devServer = {
+        historyApiFallback: true,
         contentBase: './index.html',
         hot: true,
         port: 3000,
@@ -135,6 +136,7 @@ if (NODE_ENV === 'production') {
     config.plugins.push(
         new webpack.HotModuleReplacementPlugin()
     );
+
     config.module.rules.push(
         {
             test: /\.scss$/,

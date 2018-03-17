@@ -1,4 +1,6 @@
-const fetchService = (options) => {
+import 'whatwg-fetch';
+
+export const fetchService = (options) => {
     const dev = NODE_ENV == 'development' ? true:false;
     let fullUrl = dev ? 'http://localhost'+options.url : options.url;
 
@@ -45,4 +47,29 @@ const fetchService = (options) => {
         });
 };
 
-export default fetchService;
+export const fetchServiceJson = (options) => {
+
+/*eslint no-undef:0*/
+    let fullUrl = NODE_ENV === 'development' ? 'http://admin.trivaster'+options.url : options.url;
+
+    const fetchOpts = {
+        method: options.type,
+        credentials: 'include',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(options.data)
+    };
+
+
+    fetch(fullUrl,fetchOpts)
+        .then(response=>response.json())
+        .then(json => {
+            options.success(json);
+        }).catch((error) => {
+        //для дев компонента
+        console.log(error.message);
+        console.log(error.lineNumber);
+    });
+};
