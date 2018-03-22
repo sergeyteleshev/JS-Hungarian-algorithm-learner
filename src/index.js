@@ -9,8 +9,9 @@ import App from './components/App';
 /*eslint no-unused-vars:0*/
 import {Redirect, Route, Router} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
-
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const history = createHistory();
 const middleware = [thunkMiddleware];
@@ -20,11 +21,13 @@ let store = createStore(storeApp, applyMiddleware(...middleware));
 const render = Component => {
     ReactDOM.render(
         <AppContainer>
-            <Provider store={store}>
-                <Router history={history}>
-                    <Route patch='/' component={App}/>
-                </Router>
-            </Provider>
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                <Provider store={store}>
+                    <Router history={history}>
+                        <Route patch='/' component={App}/>
+                    </Router>
+                </Provider>
+            </MuiThemeProvider>
         </AppContainer>,
         document.getElementById('root'),
     )
