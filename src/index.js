@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import storeApp from './reducers';
 import { AppContainer } from 'react-hot-loader';
@@ -16,7 +16,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 const history = createHistory();
 const middleware = [thunkMiddleware];
 
-let store = createStore(storeApp, applyMiddleware(...middleware));
+let store = createStore(storeApp, compose(applyMiddleware(...middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 const render = Component => {
     ReactDOM.render(

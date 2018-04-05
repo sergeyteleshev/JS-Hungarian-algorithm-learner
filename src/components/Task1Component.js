@@ -4,6 +4,8 @@ import brace from 'brace';
 import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/twilight';
+import task1InitialData from '../consts/Task-1';
+import RibsTableVisible from '../containers/RibsTableVisible';
 
 export default class Task1Component extends React.Component
 {
@@ -24,50 +26,7 @@ export default class Task1Component extends React.Component
                             }}
                         />
                     </div>
-                    <div className="mainBodyRightPart">
-                        <section className="given-data">
-                            <div className="givenRebraTable">
-                                <h3>Исходные данные</h3>
-                                <table>
-                                    <tr>
-                                        <td>i/j</td>
-                                        <td>A</td>
-                                        <td>B</td>
-                                        <td>C</td>
-                                        <td>D</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Heisenberg</td>
-                                        <td>4</td>
-                                        <td>6</td>
-                                        <td>9</td>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Los Pollos</td>
-                                        <td>6</td>
-                                        <td>7</td>
-                                        <td>10</td>
-                                        <td>10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tuco Salamanka</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>6</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mike Ehrmantraut</td>
-                                        <td>6</td>
-                                        <td>7</td>
-                                        <td>13</td>
-                                        <td>9</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </section>
-                    </div>
+                    <RibsTableVisible title={"Исходные данные"} initialData={task1InitialData}/>
                 </section>
 
                 <section className="userReulst">
