@@ -49,8 +49,7 @@ export default class TasksAppComponent extends React.Component {
             </section>;
         }
 
-
-            return (
+        return (
             <div>
                 <div className="application-window">
                     {currentTaskBar}

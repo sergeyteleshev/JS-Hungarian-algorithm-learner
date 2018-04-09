@@ -61,6 +61,19 @@ body
     margin: 0 auto;
 }
 
+.givenRebraTable
+{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.executeButton
+{
+  margin-top: 20px;
+}
+
 .givenRebraTable h3
 {
   font-family: Helvetica;
@@ -99,8 +112,10 @@ body
 
 .mainBodyLeftPart, .mainBodyrightPart
 {
+  margin-top: 20px;
   width: 50%;
-  padding: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .mainBody
@@ -109,7 +124,6 @@ body
   flex-direction: row;
   width: 100%;
 }
-
 
 #ace_first_task
 {

@@ -2,10 +2,9 @@ import React from 'react';
 import '../styles.scss';
 
 export default class RibsTableComponent extends React.Component {
-    render() {
-        console.log(this.props.initialData);
+    render()
+    {
         let tableData = this.props.initialData;
-        let tableContent = null;
 
         if(tableData.nodes.length === tableData.providers.length && tableData.nodes.length === tableData.ribsTable.length && tableData.ribsTable.length === 8)
         {
@@ -16,7 +15,7 @@ export default class RibsTableComponent extends React.Component {
                             <h3>{this.props.title}</h3>
                             <table>
                                 <tr>
-                                    <td>i/j</td>
+                                    <td>Точка/Поставщик</td>
                                     <td>{tableData.nodes[0]}</td>
                                     <td>{tableData.nodes[1]}</td>
                                     <td>{tableData.nodes[2]}</td>
@@ -122,7 +121,7 @@ export default class RibsTableComponent extends React.Component {
         }
         else
         {
-            return null;
+            return <div className="givenRebraTable"><h3>Ошибка исходных данных</h3></div>;
         }
     }
 }
