@@ -1,16 +1,18 @@
 import {connect} from 'react-redux';
 import Task1Component from '../components/Task1Component';
-import {editCode} from "../actions";
+import {editCodeTask1, makeTaskAvailable} from "../actions";
 
 const mapStateToProps = (state) => {
     return {
         currentCodeTask1: state.Tasks.currentCodeTask1,
+        currentTask: state.Tasks.currentTask,
     }
 };
 
 const mapDispatchToProps = (dispatch)=> {
     return {
-        editCode: (taskId) => dispatch(editCode(taskId)),
+        editCodeTask1: (taskId) => dispatch(editCodeTask1(taskId)),
+        makeTaskAvailable: (taskId) => dispatch(makeTaskAvailable(taskId)),
     }
 };
 

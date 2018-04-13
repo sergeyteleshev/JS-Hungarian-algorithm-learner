@@ -4,21 +4,49 @@ import brace from 'brace';
 import 'brace/mode/javascript';
 import 'brace/theme/twilight';
 
-import task1InitialData from '../consts/Task1/InitialData';
-import compressedResult from '../consts/Task1/SolutionCode';
-import initialRibsTable from '../consts/Task1/initialRibsTable';
-import {check} from '../consts/Task1/Checker';
-import resultData from '../consts/Task1/Result';
+import task2InitialData from '../consts/Task2/InitialData';
+import compressedResult from '../consts/Task2/SolutionCode';
+import initialRibsTable from '../consts/Task2/initialRibsTable';
+import resultData from '../consts/Task2/Result';
 
 import RibsTableVisible from '../containers/RibsTableVisible';
 import AceEditor from 'react-ace';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default class Task1Component extends React.Component
+export default class Task2Component extends React.Component
 {
+    shouldComponentUpdate()
+    {
+        return false;
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(this.props !== nextProps) {
+
+        }
+    }
+
+    //todo добавить функции в айфрейм или наоборот результат вытаскивать в компоненту и в ней самой уже чекать. лучше второе, думаю
+    componentDidMount()
+    {
+        window.addEventListener("message", this.handleFrameTasks);
+    }
+
+    handleFrameTasks(e)
+    {
+        // if(e.data.from.ifr === "load_products")
+        // {
+        //     console.log(e);
+        // }
+    }
+
+    componentWillUnmount()
+    {
+        window.removeEventListener("message", this.handleFrameTasks);
+    }
+
     executeCode()
     {
-        window.addEventListener("message", (event) => this.handleFrameTasks(event));
         let iDoc = this.ifr.contentWindow;
         let data = {
             initialRibsTable: initialRibsTable,
@@ -26,20 +54,11 @@ export default class Task1Component extends React.Component
             resultData: resultData,
         };
 
-        let result = null;
-
         iDoc.postMessage(data, "*");
-        iDoc.postMessage(result, "*");
 
-        this.ifr.contentWindow.document.body.innerHTML = "<script class='task1Code' type='text/javascript'>" +
-            eval(this.props.currentCodeTask1) +
+        this.ifr.contentWindow.document.body.innerHTML = "<script class='task2Code' type='text/javascript'>" +
+            eval(this.props.currentCodeTask2) +
             "</script>";
-
-        if(check(result) === true)
-        {
-            alert(this.props.currentTask);
-            this.props.makeTaskAvailable(this.props.currentTask + 1);
-        }
     }
 
     render()
@@ -51,9 +70,9 @@ export default class Task1Component extends React.Component
                         <AceEditor
                             mode="javascript"
                             theme="twilight"
-                            name="task1Editor"
-                            onChange={this.props.editCodeTask1}
-                            value={this.props.currentCodeTask1}
+                            name="task2Editor"
+                            onChange={this.props.editCodeTask2}
+                            value={this.props.currentCodeTask2}
                             fontSize={14}
                             showPrintMargin={true}
                             showGutter={true}
@@ -70,10 +89,10 @@ export default class Task1Component extends React.Component
                     </div>
 
                     <div className={"mainBodyRightPart"}>
-                        <RibsTableVisible title={"Исходные данные"} initialData={task1InitialData}/>
+                        <RibsTableVisible title={"Исходные данные"} initialData={task2InitialData}/>
 
                         <section className="userReulst">
-                            <iframe ref={(f) => this.ifr = f} style={{display: "none"}} className="task1-iframe"/>
+                            <iframe ref={(f) => this.ifr = f} style={{display: "none"}} className="task2-iframe"/>
                         </section>
                     </div>
                 </section>

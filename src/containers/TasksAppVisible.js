@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import TasksAppComponent from '../components/TasksAppComponent';
-import {goAnotherTask} from '../actions/index';
+import {goAnotherTask, openChosenTaskErrorDialogStatus, closeChosenTaskErrorDialogStatus} from '../actions/index';
 
 const mapStateToProps = (state) => {
     return {
@@ -9,12 +9,15 @@ const mapStateToProps = (state) => {
         isOpenedTask2: state.Tasks.isOpenedTask2,
         isOpenedTask3: state.Tasks.isOpenedTask3,
         isOpenedTask4: state.Tasks.isOpenedTask4,
+        isChosenTaskErrorDialogOpened: state.Tasks.isChosenTaskErrorDialogOpened,
     }
 };
 
 const mapDispatchToProps = (dispatch)=> {
     return {
         goAnotherTask: (taskId) => dispatch(goAnotherTask(taskId)),
+        openChosenTaskErrorDialogStatus: () => dispatch(openChosenTaskErrorDialogStatus()),
+        closeChosenTaskErrorDialogStatus: () => dispatch(closeChosenTaskErrorDialogStatus()),
     }
 };
 
