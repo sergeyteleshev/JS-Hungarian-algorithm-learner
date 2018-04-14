@@ -1,22 +1,44 @@
 import {combineReducers} from 'redux';
-import {GO_ANOTHER_TASK, EDIT_CODE_TASK_1, EDIT_CODE_TASK_2, EDIT_CODE_TASK_3, EDIT_CODE_TASK_4, MAKE_TASK_AVAILABLE} from "../actions/index";
 import initialCodeTask1 from '../consts/Task1/InitialCode';
+import initialCodeTask2 from '../consts/Task2/InitialCode';
+
+import task1InitialData from '../consts/Task1/InitialData';
+import task2InitialData from '../consts/Task2/InitialData';
+
 import {
-    CLOSE_CHOSEN_TASK_ERROR_DIALOG_STATUS,
-    OPEN_CHOSEN_TASK_ERROR_DIALOG_STATUS
+    GO_ANOTHER_TASK,
+    EDIT_CODE_TASK_1,
+    EDIT_CODE_TASK_2,
+    EDIT_CODE_TASK_3,
+    EDIT_CODE_TASK_4,
+    MAKE_TASK_AVAILABLE,
+    CLOSE_CHOSEN_TASK_ERROR_DIALOG,
+    OPEN_CHOSEN_TASK_ERROR_DIALOG,
+    SET_TASK_RESULT,
+    OPEN_TASK_DONE_DIALOG,
+    CLOSE_TASK_DONE_DIALOG, CHANGE_TAB,
 } from "../actions";
 
 let tasksInitialState = {
     currentTask: 1,
     currentCodeTask1: initialCodeTask1,
-    currentCodeTask2: '',
+    currentCodeTask2: initialCodeTask2,
     currentCodeTask3: '',
     currentCodeTask4: '',
     isOpenedTask1: true,
-    isOpenedTask2: false,
+    isOpenedTask2: true,
     isOpenedTask3: false,
     isOpenedTask4: false,
     isChosenTaskErrorDialogOpened: false,
+    resultTask1: task1InitialData.ribsTable,
+    resultTask2: task2InitialData.ribsTable,
+    resultTask3: '',
+    resultTask4: '',
+    isTaskDoneDialogOpened: false,
+    currentTask1RibsTable: "source",
+    currentTask2RibsTable: "source",
+    currentTask3RibsTable: "source",
+    currentTask4RibsTable: "source",
 };
 
 function Tasks(state = tasksInitialState, action) {
@@ -99,15 +121,85 @@ function Tasks(state = tasksInitialState, action) {
                });
            }
 
-       case OPEN_CHOSEN_TASK_ERROR_DIALOG_STATUS:
+       case OPEN_CHOSEN_TASK_ERROR_DIALOG:
            return Object.assign({}, state, {
                isChosenTaskErrorDialogOpened: action.payload,
            });
 
-       case CLOSE_CHOSEN_TASK_ERROR_DIALOG_STATUS:
+       case CLOSE_CHOSEN_TASK_ERROR_DIALOG:
            return Object.assign({}, state, {
                isChosenTaskErrorDialogOpened: action.payload,
            });
+
+       case SET_TASK_RESULT:
+           if(state.currentTask === 1)
+           {
+               return Object.assign({}, state, {
+                   resultTask1: action.payload,
+               });
+           }
+           else if(state.currentTask === 2)
+           {
+               return Object.assign({}, state, {
+                   resultTask2: action.payload,
+               });
+           }
+           else if(state.currentTask === 3)
+           {
+               return Object.assign({}, state, {
+                   resultTask3: action.payload,
+               });
+           }
+           else if(state.currentTask === 4)
+           {
+               return Object.assign({}, state, {
+                   resultTask4: action.payload,
+               });
+           }
+           else
+           {
+               return state;
+           }
+
+       case OPEN_TASK_DONE_DIALOG:
+           return Object.assign({}, state, {
+               isTaskDoneDialogOpened: action.payload,
+           });
+
+       case CLOSE_TASK_DONE_DIALOG:
+           return Object.assign({}, state, {
+               isTaskDoneDialogOpened: action.payload,
+           });
+
+       case CHANGE_TAB:
+           if(state.currentTask === 1)
+           {
+               return Object.assign({}, state, {
+                   currentTask1RibsTable: action.payload,
+               });
+           }
+           else if(state.currentTask === 2)
+           {
+               return Object.assign({}, state, {
+                   currentTask2RibsTable: action.payload,
+               });
+           }
+           else if(state.currentTask === 3)
+           {
+               return Object.assign({}, state, {
+                   currentTask3RibsTable: action.payload,
+               });
+           }
+           else if(state.currentTask === 4)
+           {
+               return Object.assign({}, state, {
+                   currentTask4RibsTable: action.payload,
+               });
+           }
+           else
+           {
+               return state;
+           }
 
        default:
            return state

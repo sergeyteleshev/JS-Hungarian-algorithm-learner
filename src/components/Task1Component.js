@@ -5,25 +5,23 @@ import 'brace/mode/javascript';
 import 'brace/theme/twilight';
 
 import task1InitialData from '../consts/Task1/InitialData';
-import compressedResult from '../consts/Task1/SolutionCode';
-import initialRibsTable from '../consts/Task1/initialRibsTable';
 import {check} from '../consts/Task1/Checker';
 import resultData from '../consts/Task1/Result';
 
 import RibsTableVisible from '../containers/RibsTableVisible';
 import AceEditor from 'react-ace';
+
 import RaisedButton from 'material-ui/RaisedButton';
+import {Tabs, Tab} from 'material-ui/Tabs';
 
 export default class Task1Component extends React.Component
 {
     executeCode()
     {
-        window.addEventListener("message", (event) => this.handleFrameTasks(event));
         let iDoc = this.ifr.contentWindow;
         let data = {
-            initialRibsTable: initialRibsTable,
-            compressedResult: compressedResult,
-            resultData: resultData,
+            initialRibsTable: Object.assign(task1InitialData.ribsTable),
+            resultData: Object.assign(resultData),
         };
 
         let result = null;
@@ -35,15 +33,26 @@ export default class Task1Component extends React.Component
             eval(this.props.currentCodeTask1) +
             "</script>";
 
+        this.props.setTaskResult(result);
+        this.forceUpdate();
+
         if(check(result) === true)
         {
-            alert(this.props.currentTask);
+            this.props.openTaskDoneDialog();
             this.props.makeTaskAvailable(this.props.currentTask + 1);
         }
     }
 
+    tabHandleChange(value)
+    {
+        this.props.changeTab(value);
+    }
+
     render()
     {
+        let resultObject = Object.assign({}, task1InitialData);
+        resultObject.ribsTable = this.props.resultTask1;
+
         return(
             <div>
                 <section className="mainBody">
@@ -65,17 +74,38 @@ export default class Task1Component extends React.Component
                                 enableSnippets: false,
                                 showLineNumbers: true,
                                 tabSize: 2,
-                            }}/>
-                        <RaisedButton className={"executeButton"} type={"button"} label="Выполнить код" onClick={() => this.executeCode()}/>
+                            }}
+                        />
+                        <div className="editorButtons">
+                            <RaisedButton className={"executeButton editorButton"} type={"button"} label="Выполнить код" onClick={() => this.executeCode()}/>
+                            <RaisedButton className={"showTaskButton editorButton"} type={"button"} label="Показать задание"/>
+                        </div>
                     </div>
 
                     <div className={"mainBodyRightPart"}>
-                        <RibsTableVisible title={"Исходные данные"} initialData={task1InitialData}/>
+                        <section className={"ribTables"}>
+                            <div className={"tabs"}>
+                                <Tabs
+                                    value={this.props.currentTask1RibsTable}
+                                    onChange={(value) => this.tabHandleChange(value)}
+                                >
+                                    <Tab label="Исходник" value="source">
+                                        <RibsTableVisible initialData={task1InitialData}/>
+                                    </Tab>
+                                    <Tab label="Результат" value="result">
+                                        <RibsTableVisible initialData={resultObject}/>
+                                    </Tab>
+                                    <Tab label="Визуализация" value="graph">
 
-                        <section className="userReulst">
-                            <iframe ref={(f) => this.ifr = f} style={{display: "none"}} className="task1-iframe"/>
+                                    </Tab>
+                                </Tabs>
+                            </div>
                         </section>
                     </div>
+
+                    <section className="userResult">
+                        <iframe ref={(f) => this.ifr = f} style={{display: "none"}} className="task1-iframe"/>
+                    </section>
                 </section>
             </div>
         );

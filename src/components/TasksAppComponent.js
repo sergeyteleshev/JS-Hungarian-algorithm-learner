@@ -11,18 +11,45 @@ import RaisedButton from 'material-ui/RaisedButton';
 export default class TasksAppComponent extends React.Component {
     openTaskErrorDialog()
     {
-        this.props.openChosenTaskErrorDialogStatus();
+        this.props.openChosenTaskErrorDialog();
     }
 
     closeTaskErrorDialog()
     {
-        this.props.closeChosenTaskErrorDialogStatus();
+        this.props.closeChosenTaskErrorDialog();
     };
+
+    openTaskDoneDialog()
+    {
+        this.props.closeTaskDoneDialog();
+    }
+
+    closeTaskDoneDialog()
+    {
+        this.props.closeTaskDoneDialog();
+    }
 
     render()
     {
         let currentTaskVisible = '';
         let currentTaskBar = '';
+        const taskErrorActions = [
+            <FlatButton
+                label="Закрыть"
+                secondary={true}
+                onClick={() => this.closeTaskErrorDialog()}
+            />,
+        ];
+
+        const taskDoneActions = [
+            <FlatButton
+                label="Закрыть"
+                secondary={true}
+                onClick={() => this.closeTaskDoneDialog()}
+            />,
+        ];
+
+
         if(this.props.currentTask === 1)
         {
             currentTaskVisible = <Task1Visible/>;
@@ -64,14 +91,6 @@ export default class TasksAppComponent extends React.Component {
             </section>;
         }
 
-        const actions = [
-            <FlatButton
-                label="Закрыть"
-                secondary={true}
-                onClick={() => this.closeTaskErrorDialog()}
-            />,
-        ];
-
         return (
             <div>
                 <div className="application-window">
@@ -82,14 +101,25 @@ export default class TasksAppComponent extends React.Component {
                     {currentTaskVisible}
                 </div>
 
-                <div>
+                <div className={"taskErrorDialog"}>
                     <Dialog
-                        actions={actions}
+                        actions={taskErrorActions}
                         modal={false}
                         open={this.props.isChosenTaskErrorDialogOpened}
                         onRequestClose={() => this.closeTaskErrorDialog()}
                     >
-                        Йо, сначала нужно пройти все предыдущие задания!
+                        Алло, сначала нужно пройти все предыдущие задания!
+                    </Dialog>
+                </div>
+
+                <div className={"taskDoneDialog"}>
+                    <Dialog
+                        actions={taskDoneActions}
+                        modal={false}
+                        open={this.props.isTaskDoneDialogOpened}
+                        onRequestClose={() => this.closeTaskDoneDialog()}
+                    >
+                        Задаение пройдено. Красава!
                     </Dialog>
                 </div>
             </div>

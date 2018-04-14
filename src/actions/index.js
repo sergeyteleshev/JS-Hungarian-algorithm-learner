@@ -5,21 +5,47 @@ export const EDIT_CODE_TASK_3 = "EDIT_CODE_TASK_3";
 export const EDIT_CODE_TASK_4 = "EDIT_CODE_TASK_4";
 export const MAKE_TASK_AVAILABLE = "MAKE_TASK_AVAILABLE";
 export const SET_TASK_RESULT = "SET_TASK_RESULT";
-export const OPEN_CHOSEN_TASK_ERROR_DIALOG_STATUS = "OPEN_CHOSEN_TASK_ERROR_DIALOG_STATUS";
-export const CLOSE_CHOSEN_TASK_ERROR_DIALOG_STATUS = "CLOSE_CHOSEN_TASK_ERROR_DIALOG_STATUS";
+export const OPEN_CHOSEN_TASK_ERROR_DIALOG = "OPEN_CHOSEN_TASK_ERROR_DIALOG";
+export const CLOSE_CHOSEN_TASK_ERROR_DIALOG = "CLOSE_CHOSEN_TASK_ERROR_DIALOG";
+export const OPEN_TASK_DONE_DIALOG = "OPEN_TASK_DONE_DIALOG";
+export const CLOSE_TASK_DONE_DIALOG = "CLOSE_TASK_DONE_DIALOG";
+export const CHANGE_TAB = "CHANGE_TAB";
 
-export function openChosenTaskErrorDialogStatus()
+export function openChosenTaskErrorDialog()
 {
     return {
-        type: OPEN_CHOSEN_TASK_ERROR_DIALOG_STATUS,
+        type: OPEN_CHOSEN_TASK_ERROR_DIALOG,
         payload: true,
     }
 }
 
-export function closeChosenTaskErrorDialogStatus()
+export function closeChosenTaskErrorDialog()
 {
     return {
-        type: CLOSE_CHOSEN_TASK_ERROR_DIALOG_STATUS,
+        type: CLOSE_CHOSEN_TASK_ERROR_DIALOG,
+        payload: false,
+    }
+}
+
+export function openTaskDoneDialog()
+{
+    return {
+        type: OPEN_TASK_DONE_DIALOG,
+        payload: true,
+    }
+}
+
+export function changeTab(value) {
+    return {
+        type: CHANGE_TAB,
+        payload: value,
+    }
+}
+
+export function closeTaskDoneDialog()
+{
+    return {
+        type: CLOSE_TASK_DONE_DIALOG,
         payload: false,
     }
 }
