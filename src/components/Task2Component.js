@@ -36,12 +36,11 @@ export default class Task2Component extends React.Component
         this.props.setTaskResult(result);
         this.forceUpdate();
 
-        //todo написать чекер
-        // if(check(result) === true)
-        // {
-        //     this.props.openTaskDoneDialog();
-        //     this.props.makeTaskAvailable(this.props.currentTask + 1);
-        // }
+        if(check(result) === true)
+        {
+            this.props.openTaskDoneDialog();
+            this.props.makeTaskAvailable(this.props.currentTask + 1);
+        }
     }
 
     tabHandleChange(value)

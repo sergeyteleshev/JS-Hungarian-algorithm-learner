@@ -9,6 +9,7 @@ import {check} from '../consts/Task1/Checker';
 import resultData from '../consts/Task1/Result';
 
 import RibsTableVisible from '../containers/RibsTableVisible';
+import TestRibsTableVisible from '../containers/TestRibsTableVisible';
 import AceEditor from 'react-ace';
 
 import RaisedButton from 'material-ui/RaisedButton';
@@ -90,10 +91,11 @@ export default class Task1Component extends React.Component
                                     onChange={(value) => this.tabHandleChange(value)}
                                 >
                                     <Tab label="Исходник" value="source">
-                                        <RibsTableVisible initialData={task1InitialData}/>
+                                        {/*todo remove */}
+                                        <TestRibsTableVisible initialData={task1InitialData}/>
                                     </Tab>
                                     <Tab label="Результат" value="result">
-                                        <RibsTableVisible initialData={resultObject}/>
+                                        <TestRibsTableVisible initialData={resultObject}/>
                                     </Tab>
                                     <Tab label="Визуализация" value="graph">
 

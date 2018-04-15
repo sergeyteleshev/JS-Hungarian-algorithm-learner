@@ -1,4 +1,4 @@
-export const result = [
+export const resultArray = [
     [0, 1, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 1, 0],
     [0, 0, 0, 0, 0, 1, 0, 0],
@@ -9,4 +9,4 @@ export const result = [
     [0, 0, 0, 0, 0, 0, 0, 1],
 ];
 
-export default result;
+export default resultArray;
