@@ -111,7 +111,17 @@ body
   color: #E91E63;
 }
 
-.given-data table tr td:first-child
+.blue, .given-data table tr td:first-child
+{
+  color: #4DD0E1;
+}
+
+.white
+{
+  color: white;
+}
+
+.pink
 {
   color: #E91E63;
 }
@@ -120,6 +130,16 @@ body
 {
   margin-top: 2.5px;
   width: 100%;
+}
+
+.ribTables
+{
+  width: 75%;
+}
+
+.givenRebraTable h3
+{
+  margin-top: 20px;
 }
 
 .mainBodyRightPart

@@ -9,7 +9,6 @@ import {check} from '../consts/Task1/Checker';
 import resultData from '../consts/Task1/Result';
 
 import RibsTableVisible from '../containers/RibsTableVisible';
-import TestRibsTableVisible from '../containers/TestRibsTableVisible';
 import AceEditor from 'react-ace';
 
 import RaisedButton from 'material-ui/RaisedButton';
@@ -92,10 +91,10 @@ export default class Task1Component extends React.Component
                                 >
                                     <Tab label="Исходник" value="source">
                                         {/*todo remove */}
-                                        <TestRibsTableVisible initialData={task1InitialData}/>
+                                        <RibsTableVisible initialData={task1InitialData}/>
                                     </Tab>
                                     <Tab label="Результат" value="result">
-                                        <TestRibsTableVisible initialData={resultObject}/>
+                                        <RibsTableVisible initialData={resultObject}/>
                                     </Tab>
                                     <Tab label="Визуализация" value="graph">
 

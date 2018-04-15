@@ -2,118 +2,85 @@ import React from 'react';
 import '../styles.scss';
 
 export default class RibsTableComponent extends React.Component {
+    getTableData(ribsTable, nodes, providers, highlightedCells = null)
+    {
+        let tdStyle = {};
+
+        let table = ribsTable.map((tr, y) => {
+            return <tr>
+                {
+                    tr.map((td, x) => {
+                        if(highlightedCells)
+                        {
+                            if(highlightedCells[y][x] === 1)
+                            {
+                                tdStyle = {color: "red"};
+                            }
+
+                            return <td style={tdStyle}>{td}</td>
+                        }
+                        else
+                        {
+                            return <td style={tdStyle}>{td}</td>
+                        }
+                    })
+                }
+            </tr>
+        });
+
+        let tableHead = <tr>
+            <td><span className={"blue"}>Поставщик</span> <span className={"white"}>/</span> <span className={"pink"}>точка</span></td>
+            {nodes.map((node) => {
+                return <td>{node}</td>
+            })}
+        </tr>;
+
+        table.unshift(tableHead);
+
+        table.map((tr, index) => {
+            if(index > 0)
+            {
+                tr.props.children.unshift(<td>{providers[index - 1]}</td>);
+            }
+        });
+
+        return table;
+    }
+
     render()
     {
-        let tableData = this.props.initialData;
+        let highlightedCells;
+        if(this.props.highlightedCells)
+        {
+            highlightedCells = this.props.highlightedCells;
+        }
 
-        try {
-            if(tableData.nodes.length === tableData.providers.length && tableData.nodes.length === tableData.ribsTable.length && tableData.ribsTable.length === 8)
+        let tableData = Object.assign({}, this.props.initialData);
+        let nodes = tableData.nodes.slice();
+        let providers = tableData.providers.slice();
+        let ribsTable = tableData.ribsTable.slice();
+
+        try
+        {
+            if(nodes.length === providers.length && nodes.length === ribsTable.length)
             {
+                let table;
+                if(highlightedCells)
+                {
+                    table = this.getTableData(ribsTable, nodes, providers, highlightedCells);
+                }
+                else
+                {
+                    table = this.getTableData(ribsTable, nodes, providers);
+                }
+
                 return (
                     <div className="mainBodyRightPart">
                         <section className="given-data">
                             <div className="givenRebraTable">
                                 {this.props.title ? <h3>{this.props.title}</h3> : null}
                                 <table>
-                                    <tr>
-                                        <td>Точка/Поставщик</td>
-                                        <td>{tableData.nodes[0]}</td>
-                                        <td>{tableData.nodes[1]}</td>
-                                        <td>{tableData.nodes[2]}</td>
-                                        <td>{tableData.nodes[3]}</td>
-                                        <td>{tableData.nodes[4]}</td>
-                                        <td>{tableData.nodes[5]}</td>
-                                        <td>{tableData.nodes[6]}</td>
-                                        <td>{tableData.nodes[7]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{tableData.providers[0]}</td>
-                                        <td>{tableData.ribsTable[0][0]}</td>
-                                        <td>{tableData.ribsTable[0][1]}</td>
-                                        <td>{tableData.ribsTable[0][2]}</td>
-                                        <td>{tableData.ribsTable[0][3]}</td>
-                                        <td>{tableData.ribsTable[0][4]}</td>
-                                        <td>{tableData.ribsTable[0][5]}</td>
-                                        <td>{tableData.ribsTable[0][6]}</td>
-                                        <td>{tableData.ribsTable[0][7]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{tableData.providers[1]}</td>
-                                        <td>{tableData.ribsTable[1][0]}</td>
-                                        <td>{tableData.ribsTable[1][1]}</td>
-                                        <td>{tableData.ribsTable[1][2]}</td>
-                                        <td>{tableData.ribsTable[1][3]}</td>
-                                        <td>{tableData.ribsTable[1][4]}</td>
-                                        <td>{tableData.ribsTable[1][5]}</td>
-                                        <td>{tableData.ribsTable[1][6]}</td>
-                                        <td>{tableData.ribsTable[1][7]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{tableData.providers[2]}</td>
-                                        <td>{tableData.ribsTable[2][0]}</td>
-                                        <td>{tableData.ribsTable[2][1]}</td>
-                                        <td>{tableData.ribsTable[2][2]}</td>
-                                        <td>{tableData.ribsTable[2][3]}</td>
-                                        <td>{tableData.ribsTable[2][4]}</td>
-                                        <td>{tableData.ribsTable[2][5]}</td>
-                                        <td>{tableData.ribsTable[2][6]}</td>
-                                        <td>{tableData.ribsTable[2][7]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{tableData.providers[3]}</td>
-                                        <td>{tableData.ribsTable[3][0]}</td>
-                                        <td>{tableData.ribsTable[3][1]}</td>
-                                        <td>{tableData.ribsTable[3][2]}</td>
-                                        <td>{tableData.ribsTable[3][3]}</td>
-                                        <td>{tableData.ribsTable[3][4]}</td>
-                                        <td>{tableData.ribsTable[3][5]}</td>
-                                        <td>{tableData.ribsTable[3][6]}</td>
-                                        <td>{tableData.ribsTable[3][7]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{tableData.providers[4]}</td>
-                                        <td>{tableData.ribsTable[4][0]}</td>
-                                        <td>{tableData.ribsTable[4][1]}</td>
-                                        <td>{tableData.ribsTable[4][2]}</td>
-                                        <td>{tableData.ribsTable[4][3]}</td>
-                                        <td>{tableData.ribsTable[4][4]}</td>
-                                        <td>{tableData.ribsTable[4][5]}</td>
-                                        <td>{tableData.ribsTable[4][6]}</td>
-                                        <td>{tableData.ribsTable[4][7]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{tableData.providers[5]}</td>
-                                        <td>{tableData.ribsTable[5][0]}</td>
-                                        <td>{tableData.ribsTable[5][1]}</td>
-                                        <td>{tableData.ribsTable[5][2]}</td>
-                                        <td>{tableData.ribsTable[5][3]}</td>
-                                        <td>{tableData.ribsTable[5][4]}</td>
-                                        <td>{tableData.ribsTable[5][5]}</td>
-                                        <td>{tableData.ribsTable[5][6]}</td>
-                                        <td>{tableData.ribsTable[5][7]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{tableData.providers[6]}</td>
-                                        <td>{tableData.ribsTable[6][0]}</td>
-                                        <td>{tableData.ribsTable[6][1]}</td>
-                                        <td>{tableData.ribsTable[6][2]}</td>
-                                        <td>{tableData.ribsTable[6][3]}</td>
-                                        <td>{tableData.ribsTable[6][4]}</td>
-                                        <td>{tableData.ribsTable[6][5]}</td>
-                                        <td>{tableData.ribsTable[6][6]}</td>
-                                        <td>{tableData.ribsTable[6][7]}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>{tableData.providers[7]}</td>
-                                        <td>{tableData.ribsTable[7][0]}</td>
-                                        <td>{tableData.ribsTable[7][1]}</td>
-                                        <td>{tableData.ribsTable[7][2]}</td>
-                                        <td>{tableData.ribsTable[7][3]}</td>
-                                        <td>{tableData.ribsTable[7][4]}</td>
-                                        <td>{tableData.ribsTable[7][5]}</td>
-                                        <td>{tableData.ribsTable[7][6]}</td>
-                                        <td>{tableData.ribsTable[7][7]}</td>
-                                    </tr>
+                                    {table}
                                 </table>
                             </div>
                         </section>
@@ -126,6 +93,7 @@ export default class RibsTableComponent extends React.Component {
             }
         }
         catch (e) {
+            console.log(e);
             return <div className="givenRebraTable"><h3>Ошибка исходных данных</h3></div>;
         }
     }

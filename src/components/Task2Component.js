@@ -93,7 +93,7 @@ export default class Task2Component extends React.Component
                                         <RibsTableVisible initialData={task2InitialData}/>
                                     </Tab>
                                     <Tab label="Результат" value="result">
-                                        <RibsTableVisible initialData={resultObject}/>
+                                        <RibsTableVisible highlightedCells={resultData} initialData={task2InitialData}/>
                                     </Tab>
                                     <Tab label="Визуализация" value="graph">
 
