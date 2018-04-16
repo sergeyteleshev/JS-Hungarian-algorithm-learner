@@ -31,7 +31,7 @@ let tasksInitialState = {
     isOpenedTask4: false,
     isChosenTaskErrorDialogOpened: false,
     resultTask1: task1InitialData.ribsTable,
-    resultTask2: task2InitialData.ribsTable,
+    resultTask2: '',
     resultTask3: '',
     resultTask4: '',
     isTaskDoneDialogOpened: false,

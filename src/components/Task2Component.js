@@ -89,11 +89,8 @@ export default class Task2Component extends React.Component
                                     value={this.props.currentTask2RibsTable}
                                     onChange={(value) => this.tabHandleChange(value)}
                                 >
-                                    <Tab label="Исходник" value="source">
-                                        <RibsTableVisible initialData={task2InitialData}/>
-                                    </Tab>
-                                    <Tab label="Результат" value="result">
-                                        <RibsTableVisible highlightedCells={resultData} initialData={task2InitialData}/>
+                                    <Tab label="Результат" value="source">
+                                        {this.props.resultTask2 ? <RibsTableVisible highlightedCells={this.props.resultTask2} initialData={task2InitialData}/> : <RibsTableVisible initialData={task2InitialData}/>}
                                     </Tab>
                                     <Tab label="Визуализация" value="graph">
 

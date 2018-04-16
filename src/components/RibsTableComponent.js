@@ -10,18 +10,20 @@ export default class RibsTableComponent extends React.Component {
             return <tr>
                 {
                     tr.map((td, x) => {
-                        if(highlightedCells)
-                        {
-                            if(highlightedCells[y][x] === 1)
+                        if(highlightedCells) {
+                            if (highlightedCells[y][x] === 1)
                             {
-                                tdStyle = {color: "red"};
+                                tdStyle = {color: "#FFCA28"};
+                                return <td style={tdStyle}>{td}</td>;
                             }
-
-                            return <td style={tdStyle}>{td}</td>
+                            else
+                            {
+                                return <td>{td}</td>;
+                            }
                         }
                         else
                         {
-                            return <td style={tdStyle}>{td}</td>
+                            return <td>{td}</td>;
                         }
                     })
                 }
