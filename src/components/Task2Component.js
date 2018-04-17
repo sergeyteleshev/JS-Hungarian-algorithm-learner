@@ -13,6 +13,7 @@ import AceEditor from 'react-ace';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import GraphVisible from "../containers/GraphVisible";
 
 export default class Task2Component extends React.Component
 {
@@ -93,7 +94,11 @@ export default class Task2Component extends React.Component
                                         {this.props.resultTask2 ? <RibsTableVisible highlightedCells={this.props.resultTask2} initialData={task2InitialData}/> : <RibsTableVisible initialData={task2InitialData}/>}
                                     </Tab>
                                     <Tab label="Визуализация" value="graph">
-
+                                        <GraphVisible
+                                            nodes={task2InitialData.nodes}
+                                            providers={task2InitialData.providers}
+                                            ribsTable={task2InitialData.ribsTable}
+                                        />
                                     </Tab>
                                 </Tabs>
                             </div>

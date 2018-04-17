@@ -44,6 +44,7 @@
     "react-monaco-editor": "^0.14.1",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.2.2",
+    "react-sigma": "^1.2.30",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "whatwg-fetch": "^2.0.2"
