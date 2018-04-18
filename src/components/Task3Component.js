@@ -15,36 +15,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 export default class Task3Component extends React.Component
 {
-    shouldComponentUpdate()
-    {
-        return false;
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if(this.props !== nextProps) {
-
-        }
-    }
-
-    //todo добавить функции в айфрейм или наоборот результат вытаскивать в компоненту и в ней самой уже чекать. лучше второе, думаю
-    componentDidMount()
-    {
-        window.addEventListener("message", this.handleFrameTasks);
-    }
-
-    handleFrameTasks(e)
-    {
-        // if(e.data.from.ifr === "load_products")
-        // {
-        //     console.log(e);
-        // }
-    }
-
-    componentWillUnmount()
-    {
-        window.removeEventListener("message", this.handleFrameTasks);
-    }
-
     executeCode()
     {
         let iDoc = this.ifr.contentWindow;

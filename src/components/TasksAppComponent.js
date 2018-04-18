@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types,react/jsx-key */
 import React from 'react';
 import '../styles.scss';
 import Task1Visible from '../containers/Task1Visible';
@@ -6,7 +7,6 @@ import Task3Visible from '../containers/Task3Visible';
 
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
-import RaisedButton from 'material-ui/RaisedButton';
 
 export default class TasksAppComponent extends React.Component {
     openTaskErrorDialog()
@@ -17,7 +17,7 @@ export default class TasksAppComponent extends React.Component {
     closeTaskErrorDialog()
     {
         this.props.closeChosenTaskErrorDialog();
-    };
+    }
 
     openTaskDoneDialog()
     {

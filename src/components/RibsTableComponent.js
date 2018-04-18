@@ -7,7 +7,7 @@ export default class RibsTableComponent extends React.Component {
         let tdStyle = {};
 
         let table = ribsTable.map((tr, y) => {
-            return <tr>
+            return <tr key={y}>
                 {
                     tr.map((td, x) => {
                         if(highlightedCells) {
@@ -32,8 +32,8 @@ export default class RibsTableComponent extends React.Component {
 
         let tableHead = <tr>
             <td><span className={"blue"}>Поставщик</span> <span className={"white"}>/</span> <span className={"pink"}>точка</span></td>
-            {nodes.map((node) => {
-                return <td>{node}</td>
+            {nodes.map((node, index) => {
+                return <td key={index}>{node}</td>
             })}
         </tr>;
 
