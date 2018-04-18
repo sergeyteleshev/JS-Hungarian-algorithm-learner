@@ -12,6 +12,8 @@ export default class GraphComponent extends React.Component {
             nodesObject.push({
                 id: "n" + i, label: nodes[i],
                 color: '#E91E63',
+                x: i,
+                y: 0,
             });
         }
 
@@ -20,6 +22,8 @@ export default class GraphComponent extends React.Component {
             nodesObject.push({
                 id: "n" + i, label: providers[i - nodes.length],
                 color: '#4DD0E1',
+                x: i - 8,
+                y: 4
             });
         }
 
@@ -65,7 +69,7 @@ export default class GraphComponent extends React.Component {
                             font: 'Helvetica',
                         }}>
                         <RelativeSize initialSize={15}/>
-                        <RandomizeNodePositions/>
+                        {/*<RandomizeNodePositions/>*/}
                     </Sigma>
                 </div>
             );
