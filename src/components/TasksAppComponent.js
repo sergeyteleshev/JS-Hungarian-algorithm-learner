@@ -4,6 +4,7 @@ import '../styles.scss';
 import Task1Visible from '../containers/Task1Visible';
 import Task2Visible from '../containers/Task2Visible';
 import Task3Visible from '../containers/Task3Visible';
+import Task4Visible from '../containers/Task3Visible';
 
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
@@ -82,7 +83,7 @@ export default class TasksAppComponent extends React.Component {
         }
         else if(this.props.currentTask === 4 && this.props.isOpenedTask4)
         {
-            currentTaskVisible = null;
+            currentTaskVisible = <Task4Visible/>;
             currentTaskBar = <section className="tasks-bar">
                 <FlatButton onClick={() => this.props.goAnotherTask(1)} label="Задание 1"/>
                 <FlatButton onClick={() => this.props.goAnotherTask(2)} label="Задание 2"/>

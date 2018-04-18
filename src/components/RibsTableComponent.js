@@ -64,6 +64,7 @@ export default class RibsTableComponent extends React.Component {
             let providers = tableData.providers.slice();
             let ribsTable = tableData.ribsTable.slice();
 
+            //todo сделать чтобы оно не только квадратную таблицу рисовало
             if(nodes.length === providers.length && nodes.length === ribsTable.length)
             {
                 let table;

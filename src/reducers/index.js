@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 import initialCodeTask1 from '../consts/Task1/InitialCode';
 import initialCodeTask2 from '../consts/Task2/InitialCode';
+import initialCodeTask3 from '../consts/Task3/InitialCode';
 
 import task1InitialData from '../consts/Task1/InitialData';
-import task2InitialData from '../consts/Task2/InitialData';
 
 import {
     GO_ANOTHER_TASK,
@@ -23,7 +23,7 @@ let tasksInitialState = {
     currentTask: 1,
     currentCodeTask1: initialCodeTask1,
     currentCodeTask2: initialCodeTask2,
-    currentCodeTask3: '',
+    currentCodeTask3: initialCodeTask3,
     currentCodeTask4: '',
     isOpenedTask1: true,
     isOpenedTask2: true,
