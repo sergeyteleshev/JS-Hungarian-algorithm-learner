@@ -57,13 +57,13 @@ export default class RibsTableComponent extends React.Component {
             highlightedCells = this.props.highlightedCells;
         }
 
-        let tableData = Object.assign({}, this.props.initialData);
-        let nodes = tableData.nodes.slice();
-        let providers = tableData.providers.slice();
-        let ribsTable = tableData.ribsTable.slice();
-
         try
         {
+            let tableData = Object.assign({}, this.props.initialData);
+            let nodes = tableData.nodes.slice();
+            let providers = tableData.providers.slice();
+            let ribsTable = tableData.ribsTable.slice();
+
             if(nodes.length === providers.length && nodes.length === ribsTable.length)
             {
                 let table;

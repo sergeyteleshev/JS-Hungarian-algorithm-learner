@@ -27,7 +27,7 @@ let tasksInitialState = {
     currentCodeTask4: '',
     isOpenedTask1: true,
     isOpenedTask2: true,
-    isOpenedTask3: false,
+    isOpenedTask3: true,
     isOpenedTask4: false,
     isChosenTaskErrorDialogOpened: false,
     resultTask1: task1InitialData.ribsTable,
