@@ -29,7 +29,3 @@ function deductMinFromColumn(data, minEl, column) {
 
     return data;
 }
-
-export const compressedResult = "function solveTask1(n){for(let r=0;r<n.length;r++)for(let e=Number.MAX_VALUE,o=0;o<n.length;o++)n[o][r]<e&&(e=n[o][r]),o===n.length-1&&(n=deductMinFromColumn(n,e,r));return n}function deductMinFromColumn(n,r,e){for(let o=0;o<n.length;o++)n[o][e]-=r;return n}";
-
-export default compressedResult;

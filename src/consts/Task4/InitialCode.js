@@ -24,6 +24,6 @@ export const initialCodeTask4 = "let fitZeros = [\n" +
     "\n" +
     "//магия доставки самого чистого товара в Альбукерке происходит здесь \n" +
     "\n" +
-    "result = snakeData; //так нужно передать массив для проверки";
+    "result = fixedFitZeros; //так нужно передать массив для проверки";
 
 export default initialCodeTask4;

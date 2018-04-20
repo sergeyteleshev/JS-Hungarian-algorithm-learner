@@ -9,10 +9,10 @@ export const initialCodeTask1 = "let ribsTable = [\n" +
     "  [5, 7, 3, 7, 6, 7, 4, 3],\n" +
     "]; // двумерный массив рёбер\n" +
     "\n" +
-    "let minTalbe = [];\n" +
+    "let minTable = [];\n" +
     "\n" +
     "//магия доставки самого чистого товара в Альбукерке происходит здесь \n" +
     "\n" +
-    "result = minTalbe; //так нужно передать массив для проверки";
+    "result = minTable; //так нужно передать массив для проверки";
 
 export default initialCodeTask1;
