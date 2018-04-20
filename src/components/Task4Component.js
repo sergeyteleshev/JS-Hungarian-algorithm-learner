@@ -101,8 +101,11 @@ export default class Task4Component extends React.Component
                                     value={this.props.currentTask4RibsTable}
                                     onChange={(value) => this.tabHandleChange(value)}
                                 >
-                                    <Tab label="Результат" value="source">
-                                        <RibsTableVisible initialData={task4InitialData} highlightedCells={highlightedData}/>
+                                    <Tab label="Исходник" value="source">
+                                        <RibsTableVisible initialData={task4InitialData} highlightedCells={highlightedData} snakeData={task4InitialData.snakeData}/>
+                                    </Tab>
+                                    <Tab label="Результат" value="result">
+                                        <RibsTableVisible initialData={task4InitialData} highlightedCells={this.props.resultTask4}/>
                                     </Tab>
                                     <Tab label="Визуализация" value="graph">
                                         {
