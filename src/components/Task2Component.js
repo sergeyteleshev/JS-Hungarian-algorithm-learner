@@ -8,12 +8,15 @@ import task2InitialData from '../consts/Task2/InitialData';
 import {check} from '../consts/Task2/Checker';
 import resultData from '../consts/Task2/Result';
 
-import RibsTableVisible from '../containers/RibsTableVisible';
 import AceEditor from 'react-ace';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import GraphVisible from "../containers/GraphVisible";
+import TaskDesc from "../consts/Task2/TaskDesc";
+
+import RibsTableVisible from '../containers/RibsTableVisible';
+import TaskDescriptionVisible from '../containers/TaskDescriptionVisible';
 
 export default class Task2Component extends React.Component
 {
@@ -80,7 +83,7 @@ export default class Task2Component extends React.Component
                         />
                         <div className="editorButtons">
                             <RaisedButton className={"executeButton editorButton"} type={"button"} label="Выполнить код" onClick={() => this.executeCode()}/>
-                            <RaisedButton className={"showTaskButton editorButton"} type={"button"} label="Показать задание"/>
+                            <RaisedButton className={"showTaskButton editorButton"} type={"button"} label="Показать задание" onClick={() => this.props.showTaskDescriptionDialog()}/>
                         </div>
                     </div>
 
@@ -120,6 +123,8 @@ export default class Task2Component extends React.Component
                         <iframe ref={(f) => this.ifr = f} style={{display: "none"}} className="task2-iframe"/>
                     </section>
                 </section>
+
+                <TaskDescriptionVisible text={TaskDesc}/>
             </div>
         );
     }

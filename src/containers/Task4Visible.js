@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 import {
-    changeTab,
+    changeTab, closeTaskDescriptionDialog,
     closeTaskDoneDialog,
     editCodeTask4,
     makeTaskAvailable,
     openTaskDoneDialog,
-    setTaskResult
+    setTaskResult, showTaskDescriptionDialog
 } from "../actions";
 import Task4Component from "../components/Task4Component";
 
@@ -26,6 +26,8 @@ const mapDispatchToProps = (dispatch)=> {
         openTaskDoneDialog: () => dispatch(openTaskDoneDialog()),
         closeTaskDoneDialog: () => dispatch(closeTaskDoneDialog()),
         changeTab: (value) => dispatch(changeTab(value)),
+        showTaskDescriptionDialog: () => dispatch(showTaskDescriptionDialog()),
+        closeTaskDescriptionDialog: () => dispatch(closeTaskDescriptionDialog()),
     }
 };
 

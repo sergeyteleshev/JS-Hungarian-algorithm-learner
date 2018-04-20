@@ -7,13 +7,16 @@ import 'brace/theme/twilight';
 
 import task3InitialData from '../consts/Task3/InitialData';
 import resultData from '../consts/Task3/Result';
+import {check} from "../consts/Task3/Checker";
+import TaskDesc from "../consts/Task3/TaskDesc";
 
 import RibsTableVisible from '../containers/RibsTableVisible';
+import GraphVisible from '../containers/GraphVisible';
+import TaskDescriptionVisible from '../containers/TaskDescriptionVisible';
+
 import AceEditor from 'react-ace';
 import RaisedButton from 'material-ui/RaisedButton';
-import {check} from "../consts/Task3/Checker";
 import {Tabs, Tab} from 'material-ui/Tabs';
-import GraphVisible from '../containers/GraphVisible';
 
 export default class Task3Component extends React.Component
 {
@@ -79,7 +82,7 @@ export default class Task3Component extends React.Component
                         />
                         <div className="editorButtons">
                             <RaisedButton className={"executeButton editorButton"} type={"button"} label="Выполнить код" onClick={() => this.executeCode()}/>
-                            <RaisedButton className={"showTaskButton editorButton"} type={"button"} label="Показать задание"/>
+                            <RaisedButton className={"showTaskButton editorButton"} type={"button"} label="Показать задание" onClick={() => this.props.showTaskDescriptionDialog()}/>
                         </div>
                     </div>
 
@@ -114,6 +117,8 @@ export default class Task3Component extends React.Component
                         <iframe ref={(f) => this.ifr = f} style={{display: "none"}} className="task3-iframe"/>
                     </section>
                 </section>
+
+                <TaskDescriptionVisible text={TaskDesc}/>
             </div>
         );
     }

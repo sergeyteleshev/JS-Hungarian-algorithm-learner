@@ -6,15 +6,16 @@ import 'brace/mode/javascript';
 import 'brace/theme/twilight';
 
 import task4InitialData from '../consts/Task4/InitialData';
-import resultData from '../consts/Task4/Result';
+import resultData from '../consts/Task4/Result';import {check} from "../consts/Task4/Checker";
+import TaskDesc from "../consts/Task4/TaskDesc";
 
 import RibsTableVisible from '../containers/RibsTableVisible';
+import GraphVisible from '../containers/GraphVisible';
+import TaskDescriptionVisible from '../containers/TaskDescriptionVisible';
+
 import AceEditor from 'react-ace';
 import RaisedButton from 'material-ui/RaisedButton';
-import {check} from "../consts/Task4/Checker";
 import {Tabs, Tab} from 'material-ui/Tabs';
-import GraphVisible from '../containers/GraphVisible';
-import task2InitialData from "../consts/Task2/InitialData";
 
 export default class Task4Component extends React.Component
 {
@@ -89,7 +90,7 @@ export default class Task4Component extends React.Component
                         />
                         <div className="editorButtons">
                             <RaisedButton className={"executeButton editorButton"} type={"button"} label="Выполнить код" onClick={() => this.executeCode()}/>
-                            <RaisedButton className={"showTaskButton editorButton"} type={"button"} label="Показать задание"/>
+                            <RaisedButton className={"showTaskButton editorButton"} type={"button"} label="Показать задание" onClick={() => this.props.showTaskDescriptionDialog()}/>
                         </div>
                     </div>
 
@@ -132,6 +133,8 @@ export default class Task4Component extends React.Component
                         <iframe ref={(f) => this.ifr = f} style={{display: "none"}} className="task4-iframe"/>
                     </section>
                 </section>
+
+                <TaskDescriptionVisible text={TaskDesc}/>
             </div>
         );
     }
