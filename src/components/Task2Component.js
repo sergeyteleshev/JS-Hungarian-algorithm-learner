@@ -35,13 +35,14 @@ export default class Task2Component extends React.Component
             "</script>";
 
         this.props.setTaskResult(result);
-        this.forceUpdate();
 
         if(check(result) === true)
         {
             this.props.openTaskDoneDialog();
             this.props.makeTaskAvailable(this.props.currentTask + 1);
         }
+
+        this.forceUpdate();
     }
 
     tabHandleChange(value)
@@ -94,11 +95,21 @@ export default class Task2Component extends React.Component
                                         {this.props.resultTask2 ? <RibsTableVisible highlightedCells={this.props.resultTask2} initialData={task2InitialData}/> : <RibsTableVisible initialData={task2InitialData}/>}
                                     </Tab>
                                     <Tab label="Визуализация" value="graph">
-                                        <GraphVisible
+                                        {
+                                            this.props.resultTask2 ?
+                                            <GraphVisible
                                             nodes={task2InitialData.nodes}
                                             providers={task2InitialData.providers}
                                             ribsTable={task2InitialData.ribsTable}
-                                        />
+                                            highlightedData={this.props.resultTask2}
+                                            />
+                                            :
+                                            <GraphVisible
+                                                nodes={task2InitialData.nodes}
+                                                providers={task2InitialData.providers}
+                                                ribsTable={task2InitialData.ribsTable}
+                                            />
+                                        }
                                     </Tab>
                                 </Tabs>
                             </div>

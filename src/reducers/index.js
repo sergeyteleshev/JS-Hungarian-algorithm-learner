@@ -28,7 +28,7 @@ let tasksInitialState = {
     isOpenedTask1: true,
     isOpenedTask2: true,
     isOpenedTask3: true,
-    isOpenedTask4: false,
+    isOpenedTask4: true,
     isChosenTaskErrorDialogOpened: false,
     resultTask1: task1InitialData.ribsTable,
     resultTask2: '',

@@ -4,7 +4,7 @@ import '../styles.scss';
 import Task1Visible from '../containers/Task1Visible';
 import Task2Visible from '../containers/Task2Visible';
 import Task3Visible from '../containers/Task3Visible';
-import Task4Visible from '../containers/Task3Visible';
+import Task4Visible from '../containers/Task4Visible';
 
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
@@ -109,7 +109,7 @@ export default class TasksAppComponent extends React.Component {
                         open={this.props.isChosenTaskErrorDialogOpened}
                         onRequestClose={() => this.closeTaskErrorDialog()}
                     >
-                        Алло, сначала нужно пройти все предыдущие задания!
+                        {this.props.currentTask === 4? "Все задания пройдены. Хорош!" : "Алло, сначала нужно пройти все предыдущие задания!"}
                     </Dialog>
                 </div>
 

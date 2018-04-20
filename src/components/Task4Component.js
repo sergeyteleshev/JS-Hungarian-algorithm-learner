@@ -14,6 +14,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {check} from "../consts/Task4/Checker";
 import {Tabs, Tab} from 'material-ui/Tabs';
 import GraphVisible from '../containers/GraphVisible';
+import task2InitialData from "../consts/Task2/InitialData";
 
 export default class Task4Component extends React.Component
 {
@@ -104,11 +105,21 @@ export default class Task4Component extends React.Component
                                         <RibsTableVisible initialData={task4InitialData} highlightedCells={highlightedData}/>
                                     </Tab>
                                     <Tab label="Визуализация" value="graph">
-                                        <GraphVisible
-                                            nodes={task4InitialData.nodes}
-                                            providers={task4InitialData.providers}
-                                            ribsTable={task4InitialData.ribsTable}
-                                        />
+                                        {
+                                            this.props.resultTask4 ?
+                                                <GraphVisible
+                                                    nodes={task4InitialData.nodes}
+                                                    providers={task4InitialData.providers}
+                                                    ribsTable={task4InitialData.ribsTable}
+                                                    highlightedData={this.props.resultTask4}
+                                                />
+                                                :
+                                                <GraphVisible
+                                                    nodes={task4InitialData.nodes}
+                                                    providers={task4InitialData.providers}
+                                                    ribsTable={task4InitialData.ribsTable}
+                                                />
+                                        }
                                     </Tab>
                                 </Tabs>
                             </div>

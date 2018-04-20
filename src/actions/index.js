@@ -10,6 +10,8 @@ export const CLOSE_CHOSEN_TASK_ERROR_DIALOG = "CLOSE_CHOSEN_TASK_ERROR_DIALOG";
 export const OPEN_TASK_DONE_DIALOG = "OPEN_TASK_DONE_DIALOG";
 export const CLOSE_TASK_DONE_DIALOG = "CLOSE_TASK_DONE_DIALOG";
 export const CHANGE_TAB = "CHANGE_TAB";
+export const SHOW_TASK_DESCRIPTION_DIALOG = "SHOW_TASK_DESCRIPTION_DIALOG";
+export const CLOSE_TASK_DESCRIPTION_DIALOG = "CLOSE_TASK_DESCRIPTION_DIALOG";
 
 export function openChosenTaskErrorDialog()
 {
@@ -102,5 +104,21 @@ export function editCodeTask4(newValue)
     return {
         type: EDIT_CODE_TASK_4,
         payload: newValue,
+    }
+}
+
+export function showTaskDescriptionDialog(description)
+{
+    return {
+        type: SHOW_TASK_DESCRIPTION_DIALOG,
+        payload: description,
+    }
+}
+
+export function closeTaskDescriptionDialog(description)
+{
+    return {
+        type: CLOSE_TASK_DESCRIPTION_DIALOG,
+        payload: description,
     }
 }

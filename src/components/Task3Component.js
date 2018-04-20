@@ -14,7 +14,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {check} from "../consts/Task3/Checker";
 import {Tabs, Tab} from 'material-ui/Tabs';
 import GraphVisible from '../containers/GraphVisible';
-import task2InitialData from "../consts/Task2/InitialData";
 
 export default class Task3Component extends React.Component
 {
@@ -53,17 +52,7 @@ export default class Task3Component extends React.Component
     render()
     {
         let resultObject = Object.assign({}, task3InitialData);
-        resultObject.ribsTable = this.props.resultTask3;
-        let highlightedData = [
-            [0, 1, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 1, 0],
-            [0, 0, 0, 0, 0, 1, 0, 0],
-            [1, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 1, 0, 0, 0, 0],
-            [0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 1],
-        ];
+        let snakeData = this.props.resultTask3;
 
         return(
             <div>
@@ -102,13 +91,18 @@ export default class Task3Component extends React.Component
                                     onChange={(value) => this.tabHandleChange(value)}
                                 >
                                     <Tab label="Результат" value="source">
-                                        <RibsTableVisible initialData={task3InitialData} highlightedCells={highlightedData}/>
+                                        <RibsTableVisible
+                                            initialData={resultObject}
+                                            highlightedCells={resultObject.highlightedData}
+                                            snakeData={snakeData}
+                                        />
                                     </Tab>
                                     <Tab label="Визуализация" value="graph">
                                         <GraphVisible
-                                            nodes={task3InitialData.nodes}
-                                            providers={task3InitialData.providers}
-                                            ribsTable={task3InitialData.ribsTable}
+                                            nodes={resultObject.nodes}
+                                            providers={resultObject.providers}
+                                            ribsTable={resultObject.ribsTable}
+                                            highlightedData={resultObject.highlightedData}
                                         />
                                     </Tab>
                                 </Tabs>

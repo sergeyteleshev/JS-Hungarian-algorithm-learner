@@ -30,6 +30,7 @@ export default class GraphComponent extends React.Component {
         return nodesObject;
     }
 
+    //todo разобраться с рендером, когда подсвечиваются рёбра
     getEdgesObject(nodes, providers, ribsTable)
     {
         let edgesObject = [];
@@ -40,11 +41,29 @@ export default class GraphComponent extends React.Component {
             {
                 if(!isNaN(parseFloat(ribsTable[i][j])) && isFinite(ribsTable[i][j])) // isNumeric?
                 {
+                    let color;
+
+                    if(this.props.highlightedData && Array.isArray(this.props.highlightedData))
+                    {
+                        if(this.props.highlightedData[i][j] === 1)
+                        {
+                            color = "#D50000";
+                        }
+                        else
+                        {
+                            color = "#000000";
+                        }
+                    }
+                    else
+                    {
+                        color = "#000000";
+                    }
+
                     edgesObject.push({
                         id: "e" + (edgesObject.length + 1),
                         source: "n" + j,
                         target: "n" + (nodes.length + i),
-                        color: '#000000',
+                        color: color,
                     });
                 }
             }

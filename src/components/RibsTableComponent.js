@@ -2,29 +2,28 @@ import React from 'react';
 import '../styles.scss';
 
 export default class RibsTableComponent extends React.Component {
-    getTableData(ribsTable, nodes, providers, highlightedCells = null)
+    getTableData(ribsTable, nodes, providers, highlightedCells = null, snakeData = null)
     {
-        let tdStyle = {};
-
         let table = ribsTable.map((tr, y) => {
             return <tr key={y}>
                 {
                     tr.map((td, x) => {
-                        if(highlightedCells) {
+                        let tdStyle = {};
+                        if(Array.isArray(snakeData) && snakeData[y][x] > 0 && snakeData[y][x] % 2 === 1)
+                        {
+                            tdStyle = {color: '#4CAF50'};
+                            td += "'";
+                        }
+
+                        if(highlightedCells)
+                        {
                             if (highlightedCells[y][x] === 1)
                             {
                                 tdStyle = {color: "#FFCA28"};
-                                return <td style={tdStyle}>{td}</td>;
-                            }
-                            else
-                            {
-                                return <td>{td}</td>;
                             }
                         }
-                        else
-                        {
-                            return <td>{td}</td>;
-                        }
+
+                        return <td style={tdStyle}>{td}</td>;
                     })
                 }
             </tr>
@@ -63,6 +62,12 @@ export default class RibsTableComponent extends React.Component {
             let nodes = tableData.nodes.slice();
             let providers = tableData.providers.slice();
             let ribsTable = tableData.ribsTable.slice();
+            let snakeData = null;
+
+            if(Array.isArray(this.props.snakeData))
+            {
+                snakeData = this.props.snakeData.slice();
+            }
 
             //todo сделать чтобы оно не только квадратную таблицу рисовало
             if(nodes.length === providers.length && nodes.length === ribsTable.length)
@@ -70,7 +75,14 @@ export default class RibsTableComponent extends React.Component {
                 let table;
                 if(highlightedCells)
                 {
-                    table = this.getTableData(ribsTable, nodes, providers, highlightedCells);
+                    if (snakeData)
+                    {
+                        table = this.getTableData(ribsTable, nodes, providers, highlightedCells, snakeData);
+                    }
+                    else
+                    {
+                        table = this.getTableData(ribsTable, nodes, providers, highlightedCells);
+                    }
                 }
                 else
                 {
