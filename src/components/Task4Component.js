@@ -40,8 +40,7 @@ export default class Task4Component extends React.Component
 
         if(check(result) === true)
         {
-            this.props.openTaskDoneDialog();
-            this.props.makeTaskAvailable(this.props.currentTask + 1);
+            //todo задания пройдены!
         }
     }
 

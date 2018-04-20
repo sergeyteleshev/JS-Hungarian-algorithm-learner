@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {
     changeTab,
-    closeTaskDoneDialog, editCodeTask1,
+    closeTaskDoneDialog,
     editCodeTask4,
     makeTaskAvailable,
     openTaskDoneDialog,
@@ -14,14 +14,13 @@ const mapStateToProps = (state) => {
         currentCodeTask4: state.Tasks.currentCodeTask4,
         currentTask: state.Tasks.currentTask,
         resultTask4: state.Tasks.resultTask4,
-        currentTask1RibsTable: state.Tasks.currentTask1RibsTable,
+        currentTask4RibsTable: state.Tasks.currentTask4RibsTable,
     }
 };
 
 const mapDispatchToProps = (dispatch)=> {
     return {
         editCodeTask4: (taskId) => dispatch(editCodeTask4(taskId)),
-        editCodeTask1: (taskId) => dispatch(editCodeTask1(taskId)),
         makeTaskAvailable: (taskId) => dispatch(makeTaskAvailable(taskId)),
         setTaskResult: (result) => dispatch(setTaskResult(result)),
         openTaskDoneDialog: () => dispatch(openTaskDoneDialog()),

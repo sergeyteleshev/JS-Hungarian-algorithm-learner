@@ -107,18 +107,16 @@ export function editCodeTask4(newValue)
     }
 }
 
-export function showTaskDescriptionDialog(description)
+export function showTaskDescriptionDialog()
 {
     return {
         type: SHOW_TASK_DESCRIPTION_DIALOG,
-        payload: description,
     }
 }
 
-export function closeTaskDescriptionDialog(description)
+export function closeTaskDescriptionDialog()
 {
     return {
         type: CLOSE_TASK_DESCRIPTION_DIALOG,
-        payload: description,
     }
 }

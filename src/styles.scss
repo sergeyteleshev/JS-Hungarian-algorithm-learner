@@ -178,3 +178,29 @@ body
 {
   width: 100%;
 }
+
+.taskDescDialog p
+{
+  line-height: 1.3;
+}
+
+.taskDescDialog p:first-child
+{
+  margin-top: 20px;
+}
+
+
+.taskDescDialog p:not(:first-child)
+{
+  margin-top: 15px;
+}
+
+.taskDescDialog a
+{
+  color: white;
+}
+
+.taskDescDialog a:hover
+{
+  color: #E91E63;
+}

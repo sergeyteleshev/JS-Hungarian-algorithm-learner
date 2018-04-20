@@ -109,7 +109,7 @@ export default class TasksAppComponent extends React.Component {
                         open={this.props.isChosenTaskErrorDialogOpened}
                         onRequestClose={() => this.closeTaskErrorDialog()}
                     >
-                        {this.props.currentTask === 4? "Все задания пройдены. Хорош!" : "Алло, сначала нужно пройти все предыдущие задания!"}
+                        Алло, сначала нужно пройти все предыдущие задания!
                     </Dialog>
                 </div>
 

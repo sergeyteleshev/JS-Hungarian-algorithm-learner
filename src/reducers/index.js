@@ -18,6 +18,8 @@ import {
     SET_TASK_RESULT,
     OPEN_TASK_DONE_DIALOG,
     CLOSE_TASK_DONE_DIALOG, CHANGE_TAB,
+    SHOW_TASK_DESCRIPTION_DIALOG,
+    CLOSE_TASK_DESCRIPTION_DIALOG,
 } from "../actions";
 
 let tasksInitialState = {
@@ -27,15 +29,16 @@ let tasksInitialState = {
     currentCodeTask3: initialCodeTask3,
     currentCodeTask4: initialCodeTask4,
     isOpenedTask1: true,
-    isOpenedTask2: false,
-    isOpenedTask3: false,
-    isOpenedTask4: false,
+    isOpenedTask2: true,
+    isOpenedTask3: true,
+    isOpenedTask4: true,
     isChosenTaskErrorDialogOpened: false,
     resultTask1: task1InitialData.ribsTable,
     resultTask2: '',
     resultTask3: '',
     resultTask4: '',
     isTaskDoneDialogOpened: false,
+    isTaskDescDialogOpened: false,
     currentTask1RibsTable: "source",
     currentTask2RibsTable: "source",
     currentTask3RibsTable: "source",
@@ -201,6 +204,16 @@ function Tasks(state = tasksInitialState, action) {
            {
                return state;
            }
+
+       case SHOW_TASK_DESCRIPTION_DIALOG:
+           return Object.assign({}, state, {
+               isTaskDescDialogOpened: true,
+           });
+
+       case CLOSE_TASK_DESCRIPTION_DIALOG:
+           return Object.assign({}, state, {
+               isTaskDescDialogOpened: false,
+           });
 
        default:
            return state
