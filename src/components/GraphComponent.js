@@ -76,22 +76,30 @@ export default class GraphComponent extends React.Component {
     {
         if(this.props.nodes && this.props.providers && this.props.ribsTable)
         {
-            return (
-                <div style={{background: '#EEEEEE', marginTop: '20px'}}>
-                    <Sigma
-                        graph={{
+            try
+            {
+                return (
+                    <div style={{background: '#EEEEEE', marginTop: '20px'}}>
+                        <Sigma
+                            graph={{
                                 nodes: this.getNodesObject(this.props.nodes, this.props.providers),
                                 edges: this.getEdgesObject(this.props.nodes, this.props.providers, this.props.ribsTable)
-                        }}
-                        settings={{
-                            drawEdges: true,
-                            font: 'Helvetica',
-                        }}>
-                        <RelativeSize initialSize={15}/>
-                        {/*<RandomizeNodePositions/>*/}
-                    </Sigma>
-                </div>
-            );
+                            }}
+                            settings={{
+                                drawEdges: true,
+                                font: 'Helvetica',
+                            }}>
+                            <RelativeSize initialSize={15}/>
+                            {/*<RandomizeNodePositions/>*/}
+                        </Sigma>
+                    </div>
+                );
+            }
+            catch (e)
+            {
+                console.log(e);
+                return <div className="givenRebraTable"><h3>Ошибка исходных данных</h3></div>;
+            }
         }
         else
         {

@@ -50,7 +50,6 @@ export default class TasksAppComponent extends React.Component {
             />,
         ];
 
-
         if(this.props.currentTask === 1)
         {
             currentTaskVisible = <Task1Visible/>;
@@ -60,6 +59,11 @@ export default class TasksAppComponent extends React.Component {
                 <FlatButton onClick={() => this.props.goAnotherTask(3)} label="Задание 3"/>
                 <FlatButton onClick={() => this.props.goAnotherTask(4)} label="Задание 4"/>
             </section>;
+
+            if(!this.props.isTask1DescShown)
+            {
+                this.props.changeTaskShownStatus();
+            }
         }
         else if(this.props.currentTask === 2 && this.props.isOpenedTask2)
         {
@@ -70,6 +74,11 @@ export default class TasksAppComponent extends React.Component {
                 <FlatButton onClick={() => this.props.goAnotherTask(3)} label="Задание 3"/>
                 <FlatButton onClick={() => this.props.goAnotherTask(4)} label="Задание 4"/>
             </section>;
+
+            if(!this.props.isTask2DescShown)
+            {
+                this.props.changeTaskShownStatus();
+            }
         }
         else if(this.props.currentTask === 3 && this.props.isOpenedTask3)
         {
@@ -80,6 +89,11 @@ export default class TasksAppComponent extends React.Component {
                 <FlatButton onClick={() => this.props.goAnotherTask(3)} label="Задание 3" secondary={true}/>
                 <FlatButton onClick={() => this.props.goAnotherTask(4)} label="Задание 4"/>
             </section>;
+
+            if(!this.props.isTask3DescShown)
+            {
+                this.props.changeTaskShownStatus();
+            }
         }
         else if(this.props.currentTask === 4 && this.props.isOpenedTask4)
         {
@@ -90,6 +104,11 @@ export default class TasksAppComponent extends React.Component {
                 <FlatButton onClick={() => this.props.goAnotherTask(3)} label="Задание 3"/>
                 <FlatButton onClick={() => this.props.goAnotherTask(4)} label="Задание 4" secondary={true}/>
             </section>;
+
+            if(!this.props.isTask4DescShown)
+            {
+                this.props.changeTaskShownStatus();
+            }
         }
 
         return (

@@ -19,7 +19,7 @@ import {
     OPEN_TASK_DONE_DIALOG,
     CLOSE_TASK_DONE_DIALOG, CHANGE_TAB,
     SHOW_TASK_DESCRIPTION_DIALOG,
-    CLOSE_TASK_DESCRIPTION_DIALOG,
+    CLOSE_TASK_DESCRIPTION_DIALOG, CHANGE_TASK_SHOWN_STATUS,
 } from "../actions";
 
 let tasksInitialState = {
@@ -29,9 +29,9 @@ let tasksInitialState = {
     currentCodeTask3: initialCodeTask3,
     currentCodeTask4: initialCodeTask4,
     isOpenedTask1: true,
-    isOpenedTask2: false,
-    isOpenedTask3: false,
-    isOpenedTask4: false,
+    isOpenedTask2: true,
+    isOpenedTask3: true,
+    isOpenedTask4: true,
     isChosenTaskErrorDialogOpened: false,
     resultTask1: task1InitialData.ribsTable,
     resultTask2: '',
@@ -43,37 +43,36 @@ let tasksInitialState = {
     currentTask2RibsTable: "source",
     currentTask3RibsTable: "source",
     currentTask4RibsTable: "source",
+    isTask1DescShown: false,
+    isTask2DescShown: false,
+    isTask3DescShown: false,
+    isTask4DescShown: false,
 };
 
 function Tasks(state = tasksInitialState, action) {
    switch(action.type) {
        case GO_ANOTHER_TASK:
-           if(action.payload === 1 && state.isOpenedTask1)
-           {
+           if (action.payload === 1 && state.isOpenedTask1) {
                return Object.assign({}, state, {
                    currentTask: action.payload,
                });
            }
-           else if(action.payload === 2 && state.isOpenedTask2)
-           {
+           else if (action.payload === 2 && state.isOpenedTask2) {
                return Object.assign({}, state, {
                    currentTask: action.payload,
                });
            }
-           else if(action.payload === 3 && state.isOpenedTask3)
-           {
+           else if (action.payload === 3 && state.isOpenedTask3) {
                return Object.assign({}, state, {
                    currentTask: action.payload,
                });
            }
-           else if(action.payload === 4 && state.isOpenedTask4)
-           {
+           else if (action.payload === 4 && state.isOpenedTask4) {
                return Object.assign({}, state, {
                    currentTask: action.payload,
                });
            }
-           else
-           {
+           else {
                return Object.assign({}, state, {
                    isChosenTaskErrorDialogOpened: true,
                });
@@ -100,26 +99,22 @@ function Tasks(state = tasksInitialState, action) {
            });
 
        case MAKE_TASK_AVAILABLE:
-           if(action.payload === 1)
-           {
+           if (action.payload === 1) {
                return Object.assign({}, state, {
                    isOpenedTask1: true,
                });
            }
-           else if(action.payload === 2)
-           {
+           else if (action.payload === 2) {
                return Object.assign({}, state, {
                    isOpenedTask2: true,
                });
            }
-           else if(action.payload === 3)
-           {
+           else if (action.payload === 3) {
                return Object.assign({}, state, {
                    isOpenedTask3: true,
                });
            }
-           else if(action.payload === 4)
-           {
+           else if (action.payload === 4) {
                return Object.assign({}, state, {
                    isOpenedTask4: true,
                });
@@ -136,32 +131,27 @@ function Tasks(state = tasksInitialState, action) {
            });
 
        case SET_TASK_RESULT:
-           if(state.currentTask === 1)
-           {
+           if (state.currentTask === 1) {
                return Object.assign({}, state, {
                    resultTask1: action.payload,
                });
            }
-           else if(state.currentTask === 2)
-           {
+           else if (state.currentTask === 2) {
                return Object.assign({}, state, {
                    resultTask2: action.payload,
                });
            }
-           else if(state.currentTask === 3)
-           {
+           else if (state.currentTask === 3) {
                return Object.assign({}, state, {
                    resultTask3: action.payload,
                });
            }
-           else if(state.currentTask === 4)
-           {
+           else if (state.currentTask === 4) {
                return Object.assign({}, state, {
                    resultTask4: action.payload,
                });
            }
-           else
-           {
+           else {
                return state;
            }
 
@@ -176,32 +166,27 @@ function Tasks(state = tasksInitialState, action) {
            });
 
        case CHANGE_TAB:
-           if(state.currentTask === 1)
-           {
+           if (state.currentTask === 1) {
                return Object.assign({}, state, {
                    currentTask1RibsTable: action.payload,
                });
            }
-           else if(state.currentTask === 2)
-           {
+           else if (state.currentTask === 2) {
                return Object.assign({}, state, {
                    currentTask2RibsTable: action.payload,
                });
            }
-           else if(state.currentTask === 3)
-           {
+           else if (state.currentTask === 3) {
                return Object.assign({}, state, {
                    currentTask3RibsTable: action.payload,
                });
            }
-           else if(state.currentTask === 4)
-           {
+           else if (state.currentTask === 4) {
                return Object.assign({}, state, {
                    currentTask4RibsTable: action.payload,
                });
            }
-           else
-           {
+           else {
                return state;
            }
 
@@ -214,6 +199,40 @@ function Tasks(state = tasksInitialState, action) {
            return Object.assign({}, state, {
                isTaskDescDialogOpened: false,
            });
+
+       case CHANGE_TASK_SHOWN_STATUS:
+           if (state.currentTask === 1)
+           {
+               return Object.assign({}, state, {
+                   isTask1DescShown: true,
+                   isTaskDescDialogOpened: true,
+               });
+           }
+           else if (state.currentTask === 2)
+           {
+               return Object.assign({}, state, {
+                   isTask2DescShown: true,
+                   isTaskDescDialogOpened: true,
+               });
+           }
+           else if (state.currentTask === 3)
+           {
+               return Object.assign({}, state, {
+                   isTask3DescShown: true,
+                   isTaskDescDialogOpened: true,
+               });
+           }
+           else if (state.currentTask === 4)
+           {
+               return Object.assign({}, state, {
+                   isTask4DescShown: true,
+                   isTaskDescDialogOpened: true,
+               });
+           }
+           else
+           {
+               return state;
+           }
 
        default:
            return state

@@ -12,6 +12,7 @@ export const CLOSE_TASK_DONE_DIALOG = "CLOSE_TASK_DONE_DIALOG";
 export const CHANGE_TAB = "CHANGE_TAB";
 export const SHOW_TASK_DESCRIPTION_DIALOG = "SHOW_TASK_DESCRIPTION_DIALOG";
 export const CLOSE_TASK_DESCRIPTION_DIALOG = "CLOSE_TASK_DESCRIPTION_DIALOG";
+export const CHANGE_TASK_SHOWN_STATUS = "CHANGE_TASK_SHOWN_STATUS";
 
 export function openChosenTaskErrorDialog()
 {
@@ -118,5 +119,11 @@ export function closeTaskDescriptionDialog()
 {
     return {
         type: CLOSE_TASK_DESCRIPTION_DIALOG,
+    }
+}
+
+export function changeTaskShownStatus() {
+    return {
+        type: CHANGE_TASK_SHOWN_STATUS,
     }
 }

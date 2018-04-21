@@ -104,7 +104,7 @@ export default class RibsTableComponent extends React.Component {
             }
             else
             {
-                return <div className="givenRebraTable"><h3> </h3></div>;
+                return <div className="givenRebraTable"><h3>Ошибка исходных данных</h3></div>;
             }
         }
         catch (e) {
