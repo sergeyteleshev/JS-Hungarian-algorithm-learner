@@ -11,8 +11,8 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const middleware = [thunkMiddleware];
-
-let store = createStore(storeApp, compose(applyMiddleware(...middleware)));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let store = createStore(storeApp, {}, composeEnhancers(applyMiddleware(...middleware)));
 
 const render = Component => {
     ReactDOM.render(
