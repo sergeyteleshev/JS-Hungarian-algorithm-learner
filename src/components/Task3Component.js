@@ -73,11 +73,11 @@ export default class Task3Component extends React.Component
                             highlightActiveLine={true}
                             width={"100%"}
                             setOptions={{
-                                enableBasicAutocompletion: true,
-                                enableLiveAutocompletion: true,
-                                enableSnippets: false,
                                 showLineNumbers: true,
                                 tabSize: 2,
+                            }}
+                            editorProps={{
+                                $blockScrolling: Infinity
                             }}
                         />
                         <div className="editorButtons">
@@ -114,7 +114,7 @@ export default class Task3Component extends React.Component
                     </div>
 
                     <section className="userResult">
-                        <iframe ref={(f) => this.ifr = f} style={{display: "none"}} className="task3-iframe"/>
+                        <iframe sandbox={"allow-same-origin"} ref={(f) => this.ifr = f} style={{display: "none"}} className="task3-iframe"/>
                     </section>
                 </section>
 

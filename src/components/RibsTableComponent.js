@@ -23,16 +23,16 @@ export default class RibsTableComponent extends React.Component {
                             }
                         }
 
-                        return <td style={tdStyle}>{td}</td>;
+                        return <td key={x + y*27} style={tdStyle}>{td}</td>;
                     })
                 }
             </tr>
         });
 
-        let tableHead = <tr>
+        let tableHead = <tr key={1234}>
             <td><span className={"blue"}>Поставщик</span> <span className={"white"}>/</span> <span className={"pink"}>точка</span></td>
             {nodes.map((node, index) => {
-                return <td key={index}>{node}</td>
+                return <td key={index * 1005}>{node}</td>
             })}
         </tr>;
 
@@ -41,7 +41,7 @@ export default class RibsTableComponent extends React.Component {
         table.map((tr, index) => {
             if(index > 0)
             {
-                tr.props.children.unshift(<td>{providers[index - 1]}</td>);
+                tr.props.children.unshift(<td key={index*2081}>{providers[index - 1]}</td>);
             }
         });
 
@@ -95,7 +95,9 @@ export default class RibsTableComponent extends React.Component {
                             <div className="givenRebraTable">
                                 {this.props.title ? <h3>{this.props.title}</h3> : null}
                                 <table>
-                                    {table}
+                                    <tbody>
+                                        {table}
+                                    </tbody>
                                 </table>
                             </div>
                         </section>

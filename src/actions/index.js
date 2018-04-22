@@ -122,6 +122,7 @@ export function closeTaskDescriptionDialog()
     }
 }
 
+//todo что-то фпс стал проседать после вот этой ебалы или чего-то раньше её. разобратсья.
 export function changeTaskShownStatus() {
     return {
         type: CHANGE_TASK_SHOWN_STATUS,

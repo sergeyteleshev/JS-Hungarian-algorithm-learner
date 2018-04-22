@@ -38,19 +38,23 @@ export default class Task2Component extends React.Component
             "</script>";
 
         this.props.setTaskResult(result);
+        this.forceUpdate();
 
         if(check(result) === true)
         {
             this.props.openTaskDoneDialog();
             this.props.makeTaskAvailable(this.props.currentTask + 1);
         }
-
-        this.forceUpdate();
     }
 
     tabHandleChange(value)
     {
         this.props.changeTab(value);
+    }
+
+    componentWillMount()
+    {
+
     }
 
     render()
@@ -74,11 +78,11 @@ export default class Task2Component extends React.Component
                             highlightActiveLine={true}
                             width={"100%"}
                             setOptions={{
-                                enableBasicAutocompletion: true,
-                                enableLiveAutocompletion: true,
-                                enableSnippets: false,
                                 showLineNumbers: true,
                                 tabSize: 2,
+                            }}
+                            editorProps={{
+                                $blockScrolling: Infinity
                             }}
                         />
                         <div className="editorButtons">
@@ -120,7 +124,7 @@ export default class Task2Component extends React.Component
                     </div>
 
                     <section className="userResult">
-                        <iframe ref={(f) => this.ifr = f} style={{display: "none"}} className="task2-iframe"/>
+                        <iframe sandbox={"allow-same-origin"} ref={(f) => this.ifr = f} style={{display: "none"}} className="task2-iframe"/>
                     </section>
                 </section>
 
