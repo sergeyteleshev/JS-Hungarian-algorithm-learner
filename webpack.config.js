@@ -61,22 +61,7 @@ if (NODE_ENV === 'production') {
         })
     );
     config.plugins.push(
-        // new webpack.optimize.UglifyJsPlugin({
-        //     beautify: false,
-        //     comments: false,
-        //     compress: {
-        //         sequences     : true,
-        //         booleans      : true,
-        //         loops         : true,
-        //         unused      : true,
-        //         warnings    : false,
-        //         drop_console: true,
-        //         unsafe      : true
-        //     }
-        // })
-        new UglifyJsPlugin({
-            sourceMap: true
-        })
+        new UglifyJsPlugin({ sourceMap: true })
     );
     config.plugins.push(
         new webpack.NoEmitOnErrorsPlugin()
@@ -94,10 +79,10 @@ if (NODE_ENV === 'production') {
         new HtmlWebpackPlugin({
             title: 'SEO',
             template:'./src/template.html',
-            filename:'Background.html',
+            filename:'index.html',
             inject:false,
             source:'',
-            prefix:''
+            prefix:'./'
         })
     );
     config.module.rules.push(
