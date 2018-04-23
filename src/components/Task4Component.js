@@ -41,8 +41,10 @@ export default class Task4Component extends React.Component
 
         if(check(result) === true)
         {
-            //todo задания пройдены!
+            this.props.openTaskDoneDialog();
         }
+
+        this.props.changeCompiledCodeDialogStatus();
     }
 
     tabHandleChange(value)

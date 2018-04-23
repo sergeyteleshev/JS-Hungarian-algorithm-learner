@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import TasksAppComponent from '../components/TasksAppComponent';
 import {goAnotherTask, openChosenTaskErrorDialog, closeChosenTaskErrorDialog, openTaskDoneDialog,
-    closeTaskDoneDialog, changeTaskShownStatus} from '../actions/index';
+    closeTaskDoneDialog, changeTaskShownStatus, changeCompiledCodeDialogStatus} from '../actions/index';
 
 const mapStateToProps = (state) => {
     return {
@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
         isTask2DescShown: state.Tasks.isTask2DescShown,
         isTask3DescShown: state.Tasks.isTask3DescShown,
         isTask4DescShown: state.Tasks.isTask4DescShown,
+        isCompiledCodeDialogOpened: state.Tasks.isCompiledCodeDialogOpened,
     }
 };
 
@@ -27,6 +28,7 @@ const mapDispatchToProps = (dispatch)=> {
         openTaskDoneDialog: () => dispatch(openTaskDoneDialog()),
         closeTaskDoneDialog: () => dispatch(closeTaskDoneDialog()),
         changeTaskShownStatus: () => dispatch(changeTaskShownStatus()),
+        changeCompiledCodeDialogStatus: () => dispatch(changeCompiledCodeDialogStatus()),
     }
 };
 

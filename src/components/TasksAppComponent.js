@@ -8,6 +8,7 @@ import Task4Visible from '../containers/Task4Visible';
 
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
+import {Snackbar} from "material-ui";
 
 export default class TasksAppComponent extends React.Component {
     openTaskErrorDialog()
@@ -142,6 +143,22 @@ export default class TasksAppComponent extends React.Component {
                         Задаение пройдено. Красава!
                     </Dialog>
                 </div>
+
+                <Snackbar
+                    open={this.props.isCompiledCodeDialogOpened}
+                    message="ВЫПОЛНЕНО"
+                    autoHideDuration={1500}
+                    onRequestClose={() => this.props.changeCompiledCodeDialogStatus()}
+                    contentStyle={{
+                        color: 'white',
+                    }}
+                    bodyStyle={{
+                        background: 'rgb(0, 151, 167)',
+                    }}
+                    style={{
+                        textAlign: 'center',
+                    }}
+                />
             </div>
         );
     }

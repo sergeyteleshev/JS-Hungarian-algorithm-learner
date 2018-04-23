@@ -45,6 +45,8 @@ export default class Task1Component extends React.Component
             this.props.openTaskDoneDialog();
             this.props.makeTaskAvailable(this.props.currentTask + 1);
         }
+
+        this.props.changeCompiledCodeDialogStatus();
     }
 
     tabHandleChange(value)

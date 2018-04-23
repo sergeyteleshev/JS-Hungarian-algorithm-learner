@@ -19,7 +19,7 @@ import {
     OPEN_TASK_DONE_DIALOG,
     CLOSE_TASK_DONE_DIALOG, CHANGE_TAB,
     SHOW_TASK_DESCRIPTION_DIALOG,
-    CLOSE_TASK_DESCRIPTION_DIALOG, CHANGE_TASK_SHOWN_STATUS,
+    CLOSE_TASK_DESCRIPTION_DIALOG, CHANGE_TASK_SHOWN_STATUS, CHANGE_COMPILED_CODE_DIALOG_STATUS,
 } from "../actions";
 
 let tasksInitialState = {
@@ -47,6 +47,7 @@ let tasksInitialState = {
     isTask2DescShown: false,
     isTask3DescShown: false,
     isTask4DescShown: false,
+    isCompiledCodeDialogOpened: false,
 };
 
 function Tasks(state = tasksInitialState, action) {
@@ -233,6 +234,11 @@ function Tasks(state = tasksInitialState, action) {
            {
                return state;
            }
+
+       case CHANGE_COMPILED_CODE_DIALOG_STATUS:
+           return Object.assign({}, state, {
+               isCompiledCodeDialogOpened: !state.isCompiledCodeDialogOpened,
+           });
 
        default:
            return state

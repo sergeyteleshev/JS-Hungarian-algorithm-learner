@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import {
+    changeCompiledCodeDialogStatus,
     changeTab, closeTaskDescriptionDialog,
     closeTaskDoneDialog,
     editCodeTask4,
@@ -28,6 +29,7 @@ const mapDispatchToProps = (dispatch)=> {
         changeTab: (value) => dispatch(changeTab(value)),
         showTaskDescriptionDialog: () => dispatch(showTaskDescriptionDialog()),
         closeTaskDescriptionDialog: () => dispatch(closeTaskDescriptionDialog()),
+        changeCompiledCodeDialogStatus: () => dispatch(changeCompiledCodeDialogStatus()),
     }
 };
 

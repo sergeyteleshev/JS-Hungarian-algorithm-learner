@@ -13,6 +13,7 @@ export const CHANGE_TAB = "CHANGE_TAB";
 export const SHOW_TASK_DESCRIPTION_DIALOG = "SHOW_TASK_DESCRIPTION_DIALOG";
 export const CLOSE_TASK_DESCRIPTION_DIALOG = "CLOSE_TASK_DESCRIPTION_DIALOG";
 export const CHANGE_TASK_SHOWN_STATUS = "CHANGE_TASK_SHOWN_STATUS";
+export const CHANGE_COMPILED_CODE_DIALOG_STATUS = "CHANGE_COMPILED_CODE_DIALOG_STATUS";
 
 export function openChosenTaskErrorDialog()
 {
@@ -122,9 +123,15 @@ export function closeTaskDescriptionDialog()
     }
 }
 
-//todo что-то фпс стал проседать после вот этой ебалы или чего-то раньше её. разобратсья.
 export function changeTaskShownStatus() {
     return {
         type: CHANGE_TASK_SHOWN_STATUS,
+    }
+}
+
+export function changeCompiledCodeDialogStatus()
+{
+    return {
+        type: CHANGE_COMPILED_CODE_DIALOG_STATUS,
     }
 }
