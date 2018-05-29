@@ -17,9 +17,14 @@ import {
     OPEN_CHOSEN_TASK_ERROR_DIALOG,
     SET_TASK_RESULT,
     OPEN_TASK_DONE_DIALOG,
-    CLOSE_TASK_DONE_DIALOG, CHANGE_TAB,
+    CLOSE_TASK_DONE_DIALOG,
+    CHANGE_TAB,
     SHOW_TASK_DESCRIPTION_DIALOG,
-    CLOSE_TASK_DESCRIPTION_DIALOG, CHANGE_TASK_SHOWN_STATUS, CHANGE_COMPILED_CODE_DIALOG_STATUS,
+    CLOSE_TASK_DESCRIPTION_DIALOG,
+    CHANGE_TASK_SHOWN_STATUS,
+    CHANGE_COMPILED_CODE_DIALOG_STATUS,
+    OPEN_CODE_ERROR_DIALOG,
+    CLOSE_CODE_ERROR_DIALOG,
 } from "../actions";
 
 let tasksInitialState = {
@@ -39,6 +44,7 @@ let tasksInitialState = {
     resultTask4: '',
     isTaskDoneDialogOpened: false,
     isTaskDescDialogOpened: false,
+    isCodeErrorDialogOpened: false,
     currentTask1RibsTable: "source",
     currentTask2RibsTable: "source",
     currentTask3RibsTable: "source",
@@ -238,6 +244,16 @@ function Tasks(state = tasksInitialState, action) {
        case CHANGE_COMPILED_CODE_DIALOG_STATUS:
            return Object.assign({}, state, {
                isCompiledCodeDialogOpened: !state.isCompiledCodeDialogOpened,
+           });
+
+       case OPEN_CODE_ERROR_DIALOG:
+           return Object.assign({}, state, {
+               isCodeErrorDialogOpened: true,
+           });
+
+       case CLOSE_CODE_ERROR_DIALOG:
+           return Object.assign({}, state, {
+               isCodeErrorDialogOpened: false,
            });
 
        default:

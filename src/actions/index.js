@@ -14,6 +14,8 @@ export const SHOW_TASK_DESCRIPTION_DIALOG = "SHOW_TASK_DESCRIPTION_DIALOG";
 export const CLOSE_TASK_DESCRIPTION_DIALOG = "CLOSE_TASK_DESCRIPTION_DIALOG";
 export const CHANGE_TASK_SHOWN_STATUS = "CHANGE_TASK_SHOWN_STATUS";
 export const CHANGE_COMPILED_CODE_DIALOG_STATUS = "CHANGE_COMPILED_CODE_DIALOG_STATUS";
+export const OPEN_CODE_ERROR_DIALOG = "OPEN_CODE_ERROR_DIALOG";
+export const CLOSE_CODE_ERROR_DIALOG = "CLOSE_CODE_ERROR_DIALOG";
 
 export function openChosenTaskErrorDialog()
 {
@@ -133,5 +135,17 @@ export function changeCompiledCodeDialogStatus()
 {
     return {
         type: CHANGE_COMPILED_CODE_DIALOG_STATUS,
+    }
+}
+
+export function openCodeErrorDialog() {
+    return {
+        type: OPEN_CODE_ERROR_DIALOG,
+    }
+}
+
+export function closeCodeErrorDialog() {
+    return {
+        type: CLOSE_CODE_ERROR_DIALOG,
     }
 }

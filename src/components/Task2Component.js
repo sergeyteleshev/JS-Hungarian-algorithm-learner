@@ -33,9 +33,15 @@ export default class Task2Component extends React.Component
         iDoc.postMessage(data, "*");
         iDoc.postMessage(result, "*");
 
-        this.ifr.contentWindow.document.body.innerHTML = "<script class='task2Code' type='text/javascript'>" +
-            eval(this.props.currentCodeTask2) +
-            "</script>";
+        try {
+            this.ifr.contentWindow.document.body.innerHTML = "<script class='task2Code' type='text/javascript'>" +
+                eval(this.props.currentCodeTask2) +
+                "</script>";
+        }
+        catch (e) {
+            this.props.openCodeErrorDialog();
+            console.log(e);
+        }
 
         this.props.setTaskResult(result);
         this.forceUpdate();

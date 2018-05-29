@@ -4,7 +4,7 @@ import {
     changeTab, closeTaskDescriptionDialog,
     closeTaskDoneDialog,
     editCodeTask3,
-    makeTaskAvailable,
+    makeTaskAvailable, openCodeErrorDialog,
     openTaskDoneDialog,
     setTaskResult, showTaskDescriptionDialog
 } from "../actions";
@@ -30,6 +30,7 @@ const mapDispatchToProps = (dispatch)=> {
         showTaskDescriptionDialog: () => dispatch(showTaskDescriptionDialog()),
         closeTaskDescriptionDialog: () => dispatch(closeTaskDescriptionDialog()),
         changeCompiledCodeDialogStatus: () => dispatch(changeCompiledCodeDialogStatus()),
+        openCodeErrorDialog: () => dispatch(openCodeErrorDialog()),
     }
 };
 

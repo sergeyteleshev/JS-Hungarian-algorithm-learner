@@ -159,6 +159,22 @@ export default class TasksAppComponent extends React.Component {
                         textAlign: 'center',
                     }}
                 />
+
+                <Snackbar
+                    open={this.props.isCodeErrorDialogOpened}
+                    message="ОШИБКА"
+                    autoHideDuration={1500}
+                    onRequestClose={() => this.props.closeCodeErrorDialog()}
+                    contentStyle={{
+                        color: 'white',
+                    }}
+                    bodyStyle={{
+                        background: 'rgb(244, 67, 54)',
+                    }}
+                    style={{
+                        textAlign: 'center',
+                    }}
+                />
             </div>
         );
     }

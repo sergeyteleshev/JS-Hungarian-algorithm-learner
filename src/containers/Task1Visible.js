@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import Task1Component from '../components/Task1Component';
 import {
     closeTaskDoneDialog, editCodeTask1, makeTaskAvailable, openTaskDoneDialog, setTaskResult, changeTab,
-    showTaskDescriptionDialog, closeTaskDescriptionDialog, changeCompiledCodeDialogStatus
+    showTaskDescriptionDialog, closeTaskDescriptionDialog, changeCompiledCodeDialogStatus, openCodeErrorDialog, closeCodeErrorDialog
 } from "../actions";
 
 const mapStateToProps = (state) => {
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
         currentTask: state.Tasks.currentTask,
         resultTask1: state.Tasks.resultTask1,
         currentTask1RibsTable: state.Tasks.currentTask1RibsTable,
+        isCodeErrorDialogOpened: state.Tasks.isCodeErrorDialogOpened,
     }
 };
 
@@ -25,6 +26,7 @@ const mapDispatchToProps = (dispatch) => {
         showTaskDescriptionDialog: () => dispatch(showTaskDescriptionDialog()),
         closeTaskDescriptionDialog: () => dispatch(closeTaskDescriptionDialog()),
         changeCompiledCodeDialogStatus: () => dispatch(changeCompiledCodeDialogStatus()),
+        openCodeErrorDialog: () => dispatch(openCodeErrorDialog()),
     }
 };
 

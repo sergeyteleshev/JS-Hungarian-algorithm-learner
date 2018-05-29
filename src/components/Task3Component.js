@@ -33,9 +33,15 @@ export default class Task3Component extends React.Component
         iDoc.postMessage(data, "*");
         iDoc.postMessage(result, "*");
 
-        this.ifr.contentWindow.document.body.innerHTML = "<script class='task3Code' type='text/javascript'>" +
-            eval(this.props.currentCodeTask3) +
-            "</script>";
+        try {
+            this.ifr.contentWindow.document.body.innerHTML = "<script class='task3Code' type='text/javascript'>" +
+                eval(this.props.currentCodeTask3) +
+                "</script>";
+        }
+        catch (e) {
+            this.props.openCodeErrorDialog();
+            console.log(e);
+        }
 
         this.props.setTaskResult(result);
         this.forceUpdate();
