@@ -20,7 +20,7 @@ export const initialCodeTask4 = "let fitZeros = [\n" +
     "  [0, 0, 0, 0, 0, 0, 0, 0],\n" +
     "];\n" +
     "\n" +
-    "let fixedFitZeros = [\n" +
+    "let resultData = [\n" +
     "  [0, 0, 0, 0, 0, 0, 0, 0],\n" +
     "  [0, 0, 0, 0, 0, 0, 0, 0],\n" +
     "  [0, 0, 0, 0, 0, 0, 0, 0],\n" +
@@ -33,6 +33,6 @@ export const initialCodeTask4 = "let fitZeros = [\n" +
     "\n" +
     "//место для чистейшего кода в Альбукерке \n" +
     "\n" +
-    "result = fixedFitZeros; //так нужно передать массив для проверки";
+    "result = resultData; //так нужно передать массив для проверки";
 
 export default initialCodeTask4;

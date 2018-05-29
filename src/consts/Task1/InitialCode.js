@@ -9,7 +9,7 @@ export const initialCodeTask1 = "let ribsTable = [\n" +
     "  [5, 7, 3, 7, 6, 7, 4, 3],\n" +
     "]; // двумерный массив рёбер\n" +
     "\n" +
-    "let minTable = [\n" +
+    "let minRibsTable = [\n" +
     "  [0, 0, 0, 0, 0, 0, 0, 0],\n" +
     "  [0, 0, 0, 0, 0, 0, 0, 0],\n" +
     "  [0, 0, 0, 0, 0, 0, 0, 0],\n" +
@@ -22,6 +22,6 @@ export const initialCodeTask1 = "let ribsTable = [\n" +
     "\n" +
     "//место для чистейшего кода в Альбукерке \n" +
     "\n" +
-    "result = minTable; //так нужно передать массив для проверки";
+    "result = minRibsTable; //так нужно передать массив для проверки";
 
 export default initialCodeTask1;

@@ -47,16 +47,16 @@ export default class GraphComponent extends React.Component {
                     {
                         if(this.props.highlightedData[i][j] === 1)
                         {
-                            color = "#D50000";
+                            color = "#000";
                         }
                         else
                         {
-                            color = "#000000";
+                            color = "#CACBD5";
                         }
                     }
                     else
                     {
-                        color = "#000000";
+                        color = "#CACBD5";
                     }
 
                     edgesObject.push({
